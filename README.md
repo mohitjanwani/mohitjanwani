@@ -1,24 +1,15 @@
 # Namaste 🙏! I'm Mohit Janwani
 
-### 🚀 Full Stack Developer | PHP/Laravel Specialist | DevOps & Cloud Enthusiast
+## 🚀 Full Stack Developer | PHP/Laravel Specialist | DevOps & Cloud Enthusiast
 
 I focus on building robust, scalable web applications and optimizing infrastructure for seamless deployment. Currently deepening my knowledge in CI/CD pipelines and cloud architecture.
 
 ---
 
-<table width="100%">
-  <tr>
-    <td width="60%">
-      [![Mohit's GitHub Streak](https://github-readme-streak-stats.herokuapp.com/?user=mohitjanwani&theme=dracula&hide_border=true)](https://git.io/streak-stats)
-    </td>
-    <td width="40%">
-      [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=mohitjanwani&layout=compact&theme=dark&exclude_repo=YOUR_EXCLUDED_REPO_NAMES)](https://github.com/mohitjanwani)
-    </td>
-  </tr>
-</table>
----
+| [![Mohit's GitHub Streak](https://github-readme-streak-stats.herokuapp.com/?user=mohitjanwani&theme=dracula&hide_border=true)](https://git.io/streak-stats) | [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=mohitjanwani&layout=compact&theme=dark)](https://github.com/mohitjanwani) |
+| - | - |
 
-## 🛠️ Core Skills: From Code to Cloud
+---
 
 <p align="center">
     <a href="https://skillicons.dev" target="_blank">
@@ -26,9 +17,12 @@ I focus on building robust, scalable web applications and optimizing infrastruct
     </a>
 </p>
 
-### Technologies:
-* **Full Stack:** PHP, Laravel, SQL, JavaScript, HTML, CSS, Tailwind CSS.
-* **DevOps/Cloud:** Docker, YAML, Git, GitHub, AWS/GCP (for Cloud Computing), Networking Fundamentals.
+---
+
+## 🛠️ Core Skills: From Code to Cloud
+
+**Full Stack:** PHP, Laravel, SQL, JavaScript, HTML, CSS, Tailwind CSS  
+**DevOps/Cloud:** Docker, YAML, Git, GitHub, AWS/GCP, Networking Fundamentals
 
 ---
 
@@ -53,8 +47,10 @@ I focus on building robust, scalable web applications and optimizing infrastruct
 
 ## ✨ Trending Quote
 
-> "The most powerful tool we have as developers is **automation**."
+> 💡 *The most powerful tool we have as developers is* **automation**.
 >
-> —Scott Hanselman (Emphasizing the DevOps mindset of efficiency)
+> — <b>Scott Hanselman</b>
 
 ---
+
+![github contribution grid snake animation](https://raw.githubusercontent.com/mohitjanwani/mohitjanwani/output/github-contribution-grid-snake.svg)
