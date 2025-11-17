@@ -52,5 +52,6 @@ I focus on building robust, scalable web applications and optimizing infrastruct
 > — <b>Scott Hanselman</b>
 
 ---
-
-![github contribution grid snake animation](https://raw.githubusercontent.com/mohitjanwani/mohitjanwani/output/github-contribution-grid-snake.svg)
+<div align="center">
+  <img src="https://raw.githubusercontent.com/mohitjanwani/mohitjanwani/output/github-contribution-grid-snake.svg" alt="Snake animation"/>
+</div>
