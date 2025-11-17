@@ -7,16 +7,15 @@ I focus on building robust, scalable web applications and optimizing infrastruct
 ---
 
 <table width="100%">
-  <tr>
-    <td width="60%">
-      [![Mohit's GitHub Streak](https://github-readme-streak-stats.herokuapp.com/?user=mohitjanwani&theme=dracula&hide_border=true)](https://git.io/streak-stats)
-    </td>
-    <td width="40%">
-      [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=mohitjanwani&layout=compact&theme=dark&exclude_repo=YOUR_EXCLUDED_REPO_NAMES)](https://github.com/mohitjanwani)
-    </td>
-  </tr>
+  <tr>
+    <td width="60%">
+      [![Mohit's GitHub Streak](https://github-readme-streak-stats.herokuapp.com/?user=mohitjanwani&theme=dracula&hide_border=true)](https://git.io/streak-stats)
+    </td>
+    <td width="40%">
+      [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=mohitjanwani&layout=compact&theme=dark&exclude_repo=YOUR_EXCLUDED_REPO_NAMES)](https://github.com/mohitjanwani)
+    </td>
+  </tr>
 </table>
-
 ---
 
 ## 🛠️ Core Skills: From Code to Cloud
@@ -52,13 +51,10 @@ I focus on building robust, scalable web applications and optimizing infrastruct
 
 ---
 
-## ✨ Trending Quote (DevOps Focus)
+## ✨ Trending Quote
 
 > "The most powerful tool we have as developers is **automation**."
 >
 > —Scott Hanselman (Emphasizing the DevOps mindset of efficiency)
 
 ---
-
-### 📈 GitHub Activity Graph
-[![Mohit's GitHub activity graph](https://github-readme-activity-graph.vercel.app/graph?username=mohitjanwani&theme=github-dark)](https://github.com/ashishguptaiitbhu/github-readme-activity-graph)
