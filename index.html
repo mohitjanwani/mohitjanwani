@@ -38,6 +38,17 @@
         console.log("✅ Alpine.js is loaded!");
       });
     </script>
+    <script>
+      // If the URL contains '#contact' (your form anchor), clear the form fields
+      window.addEventListener("DOMContentLoaded", () => {
+        if (window.location.hash === "#contact") {
+          const form = document.querySelector('form[name="contact"]');
+          if (form) {
+            form.reset();
+          }
+        }
+      });
+    </script>
     <style>
       [x-cloak] {
         display: none !important;
@@ -140,18 +151,6 @@
       }
     </style>
   </head>
-
-  <script>
-    // If the URL contains '#contact' (your form anchor), clear the form fields
-    window.addEventListener("DOMContentLoaded", () => {
-      if (window.location.hash === "#contact") {
-        const form = document.querySelector('form[name="contact"]');
-        if (form) {
-          form.reset();
-        }
-      }
-    });
-  </script>
 
   <body>
     <div class="relative" x-data="{ mobileMenuOpen: false }">
