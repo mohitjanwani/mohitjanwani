@@ -1824,18 +1824,21 @@
             card.classList.add("clicked");
           });
         });
+
+        window.addEventListener("DOMContentLoaded", () => {
+          const urlParams = new URLSearchParams(window.location.search);
+          if (urlParams.get("submitted") === "true") {
+            const form = document.querySelector('form[name="contact"]');
+            if (form) form.reset();
+            // Optionally remove the query param after form reset to avoid resetting again on refresh
+            history.replaceState(
+              null,
+              "",
+              window.location.pathname + "#contact"
+            );
+          }
+        });
       </script>
     </div>
-    <script>
-      window.addEventListener("DOMContentLoaded", () => {
-        const urlParams = new URLSearchParams(window.location.search);
-        if (urlParams.get("submitted") === "true") {
-          const form = document.querySelector('form[name="contact"]');
-          if (form) form.reset();
-          // Optionally remove the query param after form reset to avoid resetting again on refresh
-          history.replaceState(null, "", window.location.pathname + "#contact");
-        }
-      });
-    </script>
   </body>
 </html>
