@@ -1460,7 +1460,7 @@
                 <input
                   type="hidden"
                   name="_next"
-                  value="https://mohitjanwani.vercel.app/"
+                  value="https://mohitjanwani.vercel.app/?submitted=true#contact"
                 />
                 <input
                   type="hidden"
@@ -1515,18 +1515,6 @@
                   Send Message
                 </button>
               </form>
-
-              <script>
-                // If the URL contains '#contact' (your form anchor), clear the form fields
-                window.addEventListener("DOMContentLoaded", () => {
-                  if (window.location.hash === "#contact") {
-                    const form = document.querySelector('form[name="contact"]');
-                    if (form) {
-                      form.reset();
-                    }
-                  }
-                });
-              </script>
             </div>
 
             <!-- Right Side - Contact Info -->
@@ -1838,5 +1826,16 @@
         });
       </script>
     </div>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get("submitted") === "true") {
+          const form = document.querySelector('form[name="contact"]');
+          if (form) form.reset();
+          // Optionally remove the query param after form reset to avoid resetting again on refresh
+          history.replaceState(null, "", window.location.pathname + "#contact");
+        }
+      });
+    </script>
   </body>
 </html>
