@@ -1,1236 +1,1030 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" class="dark scroll-smooth">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- Slick CSS -->
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-  <link rel="stylesheet" type="text/css"
-    href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+  <title>Mohit Janwani | Full Stack & Laravel Developer</title>
+  <meta name="description" content="Portfolio of Mohit Janwani - Full Stack Developer specializing in Laravel, PHP, Vue.js, React.js, TALL Stack, and scalable web architectures." />
 
-  <!-- jQuery (required for Slick) -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- Google Fonts: Outfit & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- Slick JS -->
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+  <!-- Devicon Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
 
-  <link href="./src/style.css" rel="stylesheet" />
+  <!-- Font Awesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+
+  <!-- Compiled Tailwind CSS -->
+  <link href="./src/style.css" rel="stylesheet" />
+
+  <!-- Alpine.js -->
   <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-  <script>
-    document.addEventListener("alpine:init", () => {
-      console.log("✅ Alpine.js is loaded!");
-    });
-  </script>
   <style>
     [x-cloak] {
       display: none !important;
     }
-
-    .navbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      transition: all 0.3s ease;
-      z-index: 1000;
-    }
-
-    .navbar.scrolled {
-      background-color: rgba(7, 13, 27, 0.9);
-      /* Semi-transparent dark blue */
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    }
-
-    /* Adjust the content container to account for fixed navbar */
-    .relative.min-h-screen {
-      padding-top: 80px;
-      /* Height of your navbar */
-    }
-
-    .nav-link.active {
-      color: #f9ca6f !important;
-      font-weight: bold;
-    }
-
-    .mobile-nav-overlay {
-      background: #070d1b;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-    }
-
-    .mobile-nav-enter {
-      animation: slideInRight 0.3s ease-out forwards;
-    }
-
-    .mobile-nav-exit {
-      animation: slideOutRight 0.3s ease-in forwards;
-    }
-
-    @keyframes slideInRight {
-      from {
-        transform: translateX(100%);
-        opacity: 0;
-      }
-
-      to {
-        transform: translateX(0);
-        opacity: 1;
-      }
-    }
-
-    @keyframes slideOutRight {
-      from {
-        transform: translateX(0);
-        opacity: 1;
-      }
-
-      to {
-        transform: translateX(100%);
-        opacity: 0;
-      }
-    }
-
-    /* Dot container */
-    .slick-dots {
-      display: flex !important;
-      justify-content: center;
-      padding-top: 1.5rem;
-    }
-
-    /* Individual dot */
-    .slick-dots li button:before {
-      font-size: 10px;
-      color: #444;
-      /* default dot color */
-      opacity: 1;
-    }
-
-    /* Active dot */
-    .slick-dots li.slick-active button:before {
-      color: #f9ca6f;
-      /* active color */
-    }
-
-    /*mobile tablet card click css*/
-
-    .service-card.clicked {
-      border-color: rgb(254, 197, 68);
-    }
-
-    .service-card.clicked i,
-    .service-card.clicked h2 {
-      color: rgb(254, 197, 68);
-    }
-
-    .service-card.clicked .icon-border {
-      border-color: rgb(254, 197, 68);
-    }
   </style>
 </head>
 
-<body>
-  <div class="relative" x-data="{ mobileMenuOpen: false }">
-    <!-- Background Image -->
-    <div id="home" class="relative min-h-screen">
-      <div class="absolute inset-0 w-full h-full z-0">
-        <img src="image/bg-mountain.png" alt="Mountain landscape" class="w-full h-full object-cover brightness-50" />
+<body class="bg-[#070b14] text-gray-200 antialiased selection:bg-[#F9CA6F] selection:text-[#070b14]">
+
+  <!-- Interactive HTML5 Canvas Particle Background -->
+  <canvas id="particles-canvas"></canvas>
+
+  <div class="relative z-10" x-data="{ mobileMenuOpen: false, modalOpen: false, modalData: { title: '', image: '', desc: '', tech: [], github: '', live: '' } }">
+
+    <!-- Fixed Glassmorphism Navbar -->
+    <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-4 px-4 sm:px-8" id="main-navbar">
+      <div class="max-w-7xl mx-auto flex items-center justify-between glass-panel rounded-full px-6 py-3 border border-white/10 shadow-2xl">
+        <!-- Logo -->
+        <a href="#home" class="flex items-center space-x-3 group">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-[#F59E0B] to-[#F9CA6F] flex items-center justify-center font-bold text-[#070b14] text-lg shadow-lg group-hover:scale-105 transition-transform">
+            M
+          </div>
+          <span class="text-xl font-bold text-white tracking-wide">
+            <span class="text-[#F9CA6F]">M</span>ohit <span class="text-[#38bdf8] font-normal text-sm hidden sm:inline-block">| Full Stack Dev</span>
+          </span>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden lg:flex items-center space-x-8">
+          <a href="#home" class="nav-link text-xs uppercase tracking-wider font-semibold text-gray-300 hover:text-[#F9CA6F] transition-colors" data-section="home">Home</a>
+          <a href="#about" class="nav-link text-xs uppercase tracking-wider font-semibold text-gray-300 hover:text-[#F9CA6F] transition-colors" data-section="about">About</a>
+          <a href="#services" class="nav-link text-xs uppercase tracking-wider font-semibold text-gray-300 hover:text-[#F9CA6F] transition-colors" data-section="services">Services</a>
+          <a href="#skills" class="nav-link text-xs uppercase tracking-wider font-semibold text-gray-300 hover:text-[#F9CA6F] transition-colors" data-section="skills">Skills</a>
+          <a href="#resume" class="nav-link text-xs uppercase tracking-wider font-semibold text-gray-300 hover:text-[#F9CA6F] transition-colors" data-section="resume">Experience</a>
+          <a href="#portfolio" class="nav-link text-xs uppercase tracking-wider font-semibold text-gray-300 hover:text-[#F9CA6F] transition-colors" data-section="portfolio">Projects</a>
+          <a href="#contact" class="nav-link text-xs uppercase tracking-wider font-semibold text-gray-300 hover:text-[#F9CA6F] transition-colors" data-section="contact">Contact</a>
+        </nav>
+
+        <!-- Header Right Actions -->
+        <div class="hidden sm:flex items-center space-x-4">
+          <a href="tel:+918799051416" class="text-xs font-semibold text-gray-300 hover:text-[#F9CA6F] flex items-center gap-2 transition-colors">
+            <i class="fa fa-phone text-[#F9CA6F]"></i>
+            <span>+91 879 905 1416</span>
+          </a>
+          <a href="./image/mohitjanwani.pdf" target="_blank" class="px-5 py-2 rounded-full text-xs font-semibold bg-[#F9CA6F] text-[#070b14] hover:bg-[#f59e0b] hover:shadow-[0_0_20px_rgba(249,202,111,0.4)] transition-all transform hover:-translate-y-0.5">
+            Resume <i class="fas fa-download ml-1.5"></i>
+          </a>
+        </div>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button @click="mobileMenuOpen = !mobileMenuOpen" type="button" class="lg:hidden p-2 text-white hover:text-[#F9CA6F] focus:outline-none" aria-label="Toggle Navigation">
+          <svg x-show="!mobileMenuOpen" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+          <svg x-show="mobileMenuOpen" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
       </div>
 
-      <nav class="navbar relative z-50 py-6">
-        <div class="max-w-screen-xl flex items-center mx-auto px-6 relative">
-          <!-- Logo Section (Left) -->
-          <div class="w-1/4">
-            <a href="#" class="flex items-center space-x-2">
-              <div
-                class="w-10 h-10 min-w-[2.5rem] min-h-[2.5rem] rounded-full bg-[#F9CA6F] flex items-center justify-center flex-shrink-0">
-                <span class="text-[#0d2538] font-bold text-lg">M</span>
+      <!-- Mobile Dropdown Navigation Drawer -->
+      <div x-show="mobileMenuOpen" x-cloak @click.outside="mobileMenuOpen = false" class="lg:hidden mt-3 max-w-7xl mx-auto glass-panel rounded-2xl p-6 border border-white/10 shadow-2xl transition-all" x-transition>
+        <div class="flex flex-col space-y-4">
+          <a href="#home" @click="mobileMenuOpen = false" class="text-sm uppercase font-semibold text-white hover:text-[#F9CA6F] transition-colors py-1">Home</a>
+          <a href="#about" @click="mobileMenuOpen = false" class="text-sm uppercase font-semibold text-white hover:text-[#F9CA6F] transition-colors py-1">About</a>
+          <a href="#services" @click="mobileMenuOpen = false" class="text-sm uppercase font-semibold text-white hover:text-[#F9CA6F] transition-colors py-1">Services</a>
+          <a href="#skills" @click="mobileMenuOpen = false" class="text-sm uppercase font-semibold text-white hover:text-[#F9CA6F] transition-colors py-1">Skills</a>
+          <a href="#resume" @click="mobileMenuOpen = false" class="text-sm uppercase font-semibold text-white hover:text-[#F9CA6F] transition-colors py-1">Experience</a>
+          <a href="#portfolio" @click="mobileMenuOpen = false" class="text-sm uppercase font-semibold text-white hover:text-[#F9CA6F] transition-colors py-1">Projects</a>
+          <a href="#contact" @click="mobileMenuOpen = false" class="text-sm uppercase font-semibold text-white hover:text-[#F9CA6F] transition-colors py-1">Contact</a>
+          <div class="pt-4 border-t border-white/10 flex flex-col gap-3">
+            <a href="tel:+918799051416" class="text-sm text-gray-300 flex items-center gap-2"><i class="fa fa-phone text-[#F9CA6F]"></i> +91 879 905 1416</a>
+            <a href="./image/mohitjanwani.pdf" target="_blank" class="w-full text-center py-2.5 rounded-full text-sm font-bold bg-[#F9CA6F] text-[#070b14]">Download Resume <i class="fas fa-download ml-1.5"></i></a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="relative min-h-screen pt-36 pb-20 flex items-center justify-center overflow-hidden">
+      <!-- Ambient Glow Accents -->
+      <div class="ambient-glow-1"></div>
+      <div class="ambient-glow-2"></div>
+
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 flex flex-col items-center">
+        <!-- Status Pill -->
+        <div class="mb-6 inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold bg-[#F9CA6F]/10 text-[#F9CA6F] border border-[#F9CA6F]/30 shadow-[0_0_20px_rgba(249,202,111,0.2)] animate-float">
+          <span class="relative flex h-2.5 w-2.5">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+          </span>
+          Available for Freelance & Full-time Opportunities
+        </div>
+
+        <!-- Main Title & Intro -->
+        <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold text-white tracking-tight mb-6 leading-tight">
+          Hi, I am <span class="gradient-text-gold">Mohit Janwani</span>
+        </h1>
+
+        <p class="text-lg sm:text-2xl font-medium text-[#38bdf8] mb-6 tracking-wide max-w-3xl">
+          Full Stack Developer & Laravel Architecture Specialist
+        </p>
+
+        <p class="text-gray-300 text-sm sm:text-base max-w-2xl leading-relaxed mb-10">
+          I build scalable web applications with clean backend architectures, TALL stack, Vue.js, and seamless API integrations that deliver high-performance digital experiences.
+        </p>
+
+        <!-- Action CTAs -->
+        <div class="flex flex-wrap justify-center items-center gap-4 mb-14">
+          <a href="#portfolio" class="px-8 py-3.5 rounded-full text-sm font-bold bg-gradient-to-r from-[#F9CA6F] to-[#F59E0B] text-[#070b14] hover:shadow-[0_0_30px_rgba(249,202,111,0.5)] transition-all transform hover:-translate-y-1">
+            View My Projects <i class="fas fa-arrow-right ml-2"></i>
+          </a>
+          <a href="#contact" class="px-8 py-3.5 rounded-full text-sm font-bold bg-white/5 border border-white/15 text-white hover:border-[#F9CA6F] hover:text-[#F9CA6F] transition-all transform hover:-translate-y-1">
+            Get In Touch
+          </a>
+          <a href="./image/mohitjanwani.pdf" target="_blank" class="px-6 py-3.5 rounded-full text-sm font-bold bg-white/5 border border-white/15 text-[#38bdf8] hover:border-[#38bdf8] hover:bg-[#38bdf8]/10 transition-all transform hover:-translate-y-1">
+            Download CV <i class="fas fa-file-pdf ml-1.5"></i>
+          </a>
+        </div>
+
+        <!-- Social Icons Row -->
+        <div class="flex items-center justify-center space-x-5 mb-14">
+          <a href="https://github.com/mohitjanwani" target="_blank" class="w-12 h-12 rounded-full glass-panel flex items-center justify-center text-white hover:text-[#F9CA6F] hover:border-[#F9CA6F] hover:shadow-[0_0_20px_rgba(249,202,111,0.3)] transition-all transform hover:scale-110" aria-label="GitHub">
+            <i class="fab fa-github text-xl"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/mohitjanwani/" target="_blank" class="w-12 h-12 rounded-full glass-panel flex items-center justify-center text-white hover:text-[#38bdf8] hover:border-[#38bdf8] hover:shadow-[0_0_20px_rgba(56,189,248,0.3)] transition-all transform hover:scale-110" aria-label="LinkedIn">
+            <i class="fab fa-linkedin-in text-xl"></i>
+          </a>
+          <a href="https://x.com/mohit_janwani" target="_blank" class="w-12 h-12 rounded-full glass-panel flex items-center justify-center text-white hover:text-[#F9CA6F] hover:border-[#F9CA6F] hover:shadow-[0_0_20px_rgba(249,202,111,0.3)] transition-all transform hover:scale-110" aria-label="Twitter">
+            <i class="fab fa-x-twitter text-xl"></i>
+          </a>
+          <a href="mailto:mohitjanwani2110@gmail.com" class="w-12 h-12 rounded-full glass-panel flex items-center justify-center text-white hover:text-[#38bdf8] hover:border-[#38bdf8] hover:shadow-[0_0_20px_rgba(56,189,248,0.3)] transition-all transform hover:scale-110" aria-label="Email">
+            <i class="fas fa-envelope text-xl"></i>
+          </a>
+        </div>
+
+        <!-- Quick Stats Banner -->
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-6 sm:gap-12 glass-panel rounded-3xl p-6 sm:px-12 border border-white/10 max-w-3xl w-full">
+          <div class="text-center">
+            <h3 class="text-3xl sm:text-4xl font-extrabold text-[#F9CA6F]">2+</h3>
+            <p class="text-xs sm:text-sm text-gray-400 font-medium uppercase mt-1">Years Experience</p>
+          </div>
+          <div class="text-center">
+            <h3 class="text-3xl sm:text-4xl font-extrabold text-[#38bdf8]">15+</h3>
+            <p class="text-xs sm:text-sm text-gray-400 font-medium uppercase mt-1">Projects Completed</p>
+          </div>
+          <div class="col-span-2 md:col-span-1 text-center">
+            <h3 class="text-3xl sm:text-4xl font-extrabold text-[#F9CA6F]">100%</h3>
+            <p class="text-xs sm:text-sm text-gray-400 font-medium uppercase mt-1">Client Satisfaction</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT ME SECTION -->
+    <section id="about" class="relative py-28 overflow-hidden">
+      <!-- Background Title Overlay -->
+      <div class="absolute top-10 left-0 w-full flex justify-center pointer-events-none select-none opacity-5">
+        <h2 class="text-7xl sm:text-9xl font-black text-white uppercase tracking-widest">ABOUT ME</h2>
+      </div>
+
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <!-- Section Header -->
+        <div class="text-center mb-16">
+          <h2 class="text-sm uppercase font-bold text-[#F9CA6F] tracking-widest mb-2">Who I Am</h2>
+          <h3 class="text-3xl sm:text-4xl font-extrabold text-white">About Me</h3>
+          <div class="w-24 h-1 bg-gradient-to-r from-[#F9CA6F] to-[#38bdf8] mx-auto mt-4 rounded-full"></div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <!-- Left Column - Profile Card -->
+          <div class="lg:col-span-5 flex justify-center">
+            <div class="relative group max-w-sm w-full">
+              <!-- Soft Ambient Backdrop Glow -->
+              <div class="absolute -inset-3 bg-gradient-to-tr from-[#F9CA6F]/25 via-[#38bdf8]/20 to-[#F9CA6F]/25 rounded-[2.5rem] blur-2xl opacity-40 group-hover:opacity-85 transition-all duration-700 ease-out"></div>
+              
+              <div class="relative glass-panel rounded-[2rem] p-3.5 border border-white/10 group-hover:border-[#F9CA6F]/40 shadow-2xl transition-all duration-500 transform group-hover:-translate-y-2">
+                
+                <!-- Floating Corner Badge -->
+                <div class="absolute top-6 left-6 z-20">
+                  <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold bg-[#070b14]/85 backdrop-blur-md text-[#F9CA6F] border border-[#F9CA6F]/30 shadow-lg">
+                    <span class="w-1.5 h-1.5 rounded-full bg-[#F9CA6F] animate-pulse"></span> Full Stack Developer
+                  </span>
+                </div>
+
+                <!-- Smooth Image Container -->
+                <div class="rounded-2xl overflow-hidden bg-gradient-to-b from-[#1e293b]/40 to-[#070b14] relative">
+                  <img src="image/mohit-edit.png" alt="Mohit Janwani" class="w-full h-auto object-cover transform group-hover:scale-[1.02] transition-all duration-700 ease-out" />
+                  <div class="absolute inset-0 bg-gradient-to-t from-[#070b14] via-transparent to-transparent opacity-60"></div>
+                </div>
+
+                <!-- Card Bottom Text -->
+                <div class="pt-4 pb-2 text-center">
+                  <h4 class="text-xl font-bold text-white group-hover:text-[#F9CA6F] transition-colors">Mohit Janwani</h4>
+                  <p class="text-xs font-semibold text-[#38bdf8] mt-0.5">Laravel & Full Stack Specialist</p>
+                </div>
               </div>
-              <span class="text-2xl font-semibold text-white">
-                <span class="text-[#F9CA6F]">M</span>ohit
-              </span>
+            </div>
+          </div>
+
+          <!-- Right Column - Information & Details -->
+          <div class="lg:col-span-7">
+            <h3 class="text-3xl font-bold text-white mb-4">
+              Hi There! I'm <span class="text-[#F9CA6F]">Mohit Janwani</span>
+            </h3>
+            <h4 class="text-xl text-[#38bdf8] font-semibold mb-6">
+              Software Developer & Full Stack Specialist
+            </h4>
+            
+            <p class="text-gray-300 leading-relaxed mb-8">
+              I am a Software Developer with expertise in Laravel, PHP, TALL Stack, Vue.js, and React.js. Based in Ahmedabad, India, I specialize in engineering scalable web applications, designing RESTful APIs, optimizing relational databases, and crafting responsive user interfaces with smooth interactions.
+            </p>
+
+            <!-- Personal Data Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+              <div class="p-3.5 glass-panel rounded-xl border border-white/5 flex items-center gap-3">
+                <div class="w-9 h-9 rounded-lg bg-[#F9CA6F]/10 text-[#F9CA6F] flex items-center justify-center text-sm font-bold"><i class="fas fa-calendar-alt"></i></div>
+                <div>
+                  <p class="text-xs text-gray-400">Birthday</p>
+                  <p class="text-sm font-semibold text-white">October 21, 2003</p>
+                </div>
+              </div>
+
+              <div class="p-3.5 glass-panel rounded-xl border border-white/5 flex items-center gap-3">
+                <div class="w-9 h-9 rounded-lg bg-[#38bdf8]/10 text-[#38bdf8] flex items-center justify-center text-sm font-bold"><i class="fas fa-phone-alt"></i></div>
+                <div>
+                  <p class="text-xs text-gray-400">Phone</p>
+                  <p class="text-sm font-semibold text-white">+91 8799051416</p>
+                </div>
+              </div>
+
+              <div class="p-3.5 glass-panel rounded-xl border border-white/5 flex items-center gap-3">
+                <div class="w-9 h-9 rounded-lg bg-[#F9CA6F]/10 text-[#F9CA6F] flex items-center justify-center text-sm font-bold"><i class="fas fa-envelope"></i></div>
+                <div>
+                  <p class="text-xs text-gray-400">Email</p>
+                  <p class="text-sm font-semibold text-white break-all">mohitjanwani2110@gmail.com</p>
+                </div>
+              </div>
+
+              <div class="p-3.5 glass-panel rounded-xl border border-white/5 flex items-center gap-3">
+                <div class="w-9 h-9 rounded-lg bg-[#38bdf8]/10 text-[#38bdf8] flex items-center justify-center text-sm font-bold"><i class="fas fa-map-marker-alt"></i></div>
+                <div>
+                  <p class="text-xs text-gray-400">Location</p>
+                  <p class="text-sm font-semibold text-white">Ahmedabad, Gujarat, India</p>
+                </div>
+              </div>
+
+              <div class="p-3.5 glass-panel rounded-xl border border-white/5 flex items-center gap-3">
+                <div class="w-9 h-9 rounded-lg bg-[#F9CA6F]/10 text-[#F9CA6F] flex items-center justify-center text-sm font-bold"><i class="fas fa-language"></i></div>
+                <div>
+                  <p class="text-xs text-gray-400">Languages</p>
+                  <p class="text-sm font-semibold text-white">English, Hindi, Gujarati</p>
+                </div>
+              </div>
+
+              <div class="p-3.5 glass-panel rounded-xl border border-white/5 flex items-center gap-3">
+                <div class="w-9 h-9 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-sm font-bold"><i class="fas fa-check-circle"></i></div>
+                <div>
+                  <p class="text-xs text-gray-400">Freelance</p>
+                  <p class="text-sm font-semibold text-emerald-400">Available Immediately</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Resume Download Link -->
+            <a href="./image/mohitjanwani.pdf" target="_blank" class="inline-flex items-center gap-3 px-8 py-3.5 rounded-full text-sm font-bold bg-[#F9CA6F] text-[#070b14] hover:bg-[#f59e0b] hover:shadow-[0_0_25px_rgba(249,202,111,0.4)] transition-all">
+              Download Full Resume <i class="fas fa-arrow-down-long"></i>
             </a>
           </div>
+        </div>
+      </div>
+    </section>
 
-          <!-- Navigation Links (Center) - Hidden on tablet and mobile -->
-          <div class="hidden lg:flex items-center justify-start w-3/4">
-            <ul class="font-medium flex items-center space-x-9">
-              <li>
-                <a href="#home" class="nav-link text-white uppercase text-sm font-medium hover:text-[#F9CA6F]"
-                  data-section="home">Home</a>
-              </li>
-              <li>
-                <a href="#about" class="nav-link text-white uppercase text-sm font-medium hover:text-[#F9CA6F]"
-                  data-section="about">About</a>
-              </li>
-              <li>
-                <a href="#resume" class="text-white uppercase text-sm font-medium hover:text-[#F9CA6F]">Resume</a>
-              </li>
-              <li>
-                <a href="#portfolio" class="text-white uppercase text-sm font-medium hover:text-[#F9CA6F]">Portfolio</a>
-              </li>
-              <!-- <li>
-                  <a
-                    href="#blog"
-                    class="text-white uppercase text-sm font-medium hover:text-[#F9CA6F]"
-                    >Blog</a
-                  >
-                </li> -->
-              <li>
-                <a href="#contact" class="text-white uppercase text-sm font-medium hover:text-[#F9CA6F]">Contact</a>
-              </li>
-              <li class="text-gray-500">|</li>
-              <li>
-                <a href="tel:+918799051416" class="text-white flex items-center text-sm font-medium">
-                  <i class="fa fa-phone h-4 w-4 mr-2 text-current"></i>
-                  <span class="uppercase hover:text-[#F9CA6F]">+91 879 905 1416</span>
-                </a>
-              </li>
-            </ul>
+    <!-- SERVICES SECTION -->
+    <section id="services" class="relative py-28 overflow-hidden">
+      <!-- Background Title Overlay -->
+      <div class="absolute top-10 left-0 w-full flex justify-center pointer-events-none select-none opacity-5">
+        <h2 class="text-7xl sm:text-9xl font-black text-white uppercase tracking-widest">SERVICES</h2>
+      </div>
+
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <!-- Section Header -->
+        <div class="text-center mb-16">
+          <h2 class="text-sm uppercase font-bold text-[#F9CA6F] tracking-widest mb-2">What I Offer</h2>
+          <h3 class="text-3xl sm:text-4xl font-extrabold text-white">My Services</h3>
+          <div class="w-24 h-1 bg-gradient-to-r from-[#F9CA6F] to-[#38bdf8] mx-auto mt-4 rounded-full"></div>
+        </div>
+
+        <!-- Services Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Card 1: Web Development -->
+          <div class="glass-panel glass-panel-hover rounded-3xl p-8 border border-white/10 flex flex-col items-start group">
+            <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#F9CA6F]/20 to-[#F59E0B]/10 border border-[#F9CA6F]/30 flex items-center justify-center text-[#F9CA6F] text-3xl mb-6 group-hover:scale-110 transition-transform">
+              <i class="devicon-laravel-original"></i>
+            </div>
+            <h4 class="text-xl font-bold text-white mb-3 group-hover:text-[#F9CA6F] transition-colors">Web Development</h4>
+            <p class="text-gray-400 text-sm leading-relaxed">
+              Building robust, scalable, and secure web applications using PHP Laravel and TALL Stack tailored to complex business requirements.
+            </p>
           </div>
 
-          <!-- Mobile Menu Button - Shows on tablet and mobile -->
-          <div class="ml-auto lg:hidden">
-            <button @click="mobileMenuOpen = !mobileMenuOpen" type="button"
-              class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-white rounded-lg hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-600 transition-all duration-300"
-              aria-controls="mobile-menu" :aria-expanded="mobileMenuOpen">
-              <span class="sr-only" x-text="mobileMenuOpen ? 'Close menu' : 'Open menu'"></span>
-              <!-- Hamburger Icon -->
-              <svg x-show="!mobileMenuOpen" class="w-5 h-5 transition-all duration-300" aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14"
-                x-transition:enter="transition ease-in duration-200" x-transition:enter-start="opacity-0 rotate-90"
-                x-transition:enter-end="opacity-100 rotate-0">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M1 1h15M1 7h15M1 13h15" />
-              </svg>
-              <!-- Close Icon -->
-              <svg x-show="mobileMenuOpen" class="w-5 h-5 transition-all duration-300" fill="none" stroke="currentColor"
-                viewBox="0 0 24 24" x-transition:enter="transition ease-in duration-200"
-                x-transition:enter-start="opacity-0 rotate-90" x-transition:enter-end="opacity-100 rotate-0">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-              </svg>
+          <!-- Card 2: Frontend Engineering -->
+          <div class="glass-panel glass-panel-hover rounded-3xl p-8 border border-white/10 flex flex-col items-start group">
+            <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#38bdf8]/20 to-[#818cf8]/10 border border-[#38bdf8]/30 flex items-center justify-center text-[#38bdf8] text-3xl mb-6 group-hover:scale-110 transition-transform">
+              <i class="fas fa-code"></i>
+            </div>
+            <h4 class="text-xl font-bold text-white mb-3 group-hover:text-[#38bdf8] transition-colors">Frontend Engineering</h4>
+            <p class="text-gray-400 text-sm leading-relaxed">
+              Creating clean, highly responsive, and interactive user interfaces using Vue.js, React.js, Tailwind CSS, Alpine.js, and HTML5/CSS3.
+            </p>
+          </div>
+
+          <!-- Card 3: Backend & API Architecture -->
+          <div class="glass-panel glass-panel-hover rounded-3xl p-8 border border-white/10 flex flex-col items-start group">
+            <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#F9CA6F]/20 to-[#F59E0B]/10 border border-[#F9CA6F]/30 flex items-center justify-center text-[#F9CA6F] text-3xl mb-6 group-hover:scale-110 transition-transform">
+              <i class="fas fa-server"></i>
+            </div>
+            <h4 class="text-xl font-bold text-white mb-3 group-hover:text-[#F9CA6F] transition-colors">Backend & API Architecture</h4>
+            <p class="text-gray-400 text-sm leading-relaxed">
+              Designing RESTful APIs, MVC architecture, secure middleware, authentication, and background web crawlers.
+            </p>
+          </div>
+
+          <!-- Card 4: Database Management -->
+          <div class="glass-panel glass-panel-hover rounded-3xl p-8 border border-white/10 flex flex-col items-start group">
+            <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#38bdf8]/20 to-[#818cf8]/10 border border-[#38bdf8]/30 flex items-center justify-center text-[#38bdf8] text-3xl mb-6 group-hover:scale-110 transition-transform">
+              <i class="devicon-mysql-plain"></i>
+            </div>
+            <h4 class="text-xl font-bold text-white mb-3 group-hover:text-[#38bdf8] transition-colors">Database Management</h4>
+            <p class="text-gray-400 text-sm leading-relaxed">
+              Designing efficient relational database schemas in MySQL, query optimization, indexing, data migrations, and Eloquent ORM.
+            </p>
+          </div>
+
+          <!-- Card 5: Performance & Cloud Integration -->
+          <div class="glass-panel glass-panel-hover rounded-3xl p-8 border border-white/10 flex flex-col items-start group">
+            <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#F9CA6F]/20 to-[#F59E0B]/10 border border-[#F9CA6F]/30 flex items-center justify-center text-[#F9CA6F] text-3xl mb-6 group-hover:scale-110 transition-transform">
+              <i class="fab fa-aws"></i>
+            </div>
+            <h4 class="text-xl font-bold text-white mb-3 group-hover:text-[#F9CA6F] transition-colors">Cloud & AWS Integration</h4>
+            <p class="text-gray-400 text-sm leading-relaxed">
+              Integrating AWS S3 for secure document storage, server configuration, host management, and cloud application deployment.
+            </p>
+          </div>
+
+          <!-- Card 6: Custom Web Solutions -->
+          <div class="glass-panel glass-panel-hover rounded-3xl p-8 border border-white/10 flex flex-col items-start group">
+            <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#38bdf8]/20 to-[#818cf8]/10 border border-[#38bdf8]/30 flex items-center justify-center text-[#38bdf8] text-3xl mb-6 group-hover:scale-110 transition-transform">
+              <i class="fas fa-cogs"></i>
+            </div>
+            <h4 class="text-xl font-bold text-white mb-3 group-hover:text-[#38bdf8] transition-colors">Custom Web Solutions</h4>
+            <p class="text-gray-400 text-sm leading-relaxed">
+              Crafting tailored web platforms, incubators, admin portals, and AI assistant tools to solve complex business requirements.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section id="skills" class="relative py-28 overflow-hidden">
+      <!-- Background Title Overlay -->
+      <div class="absolute top-10 left-0 w-full flex justify-center pointer-events-none select-none opacity-5">
+        <h2 class="text-7xl sm:text-9xl font-black text-white uppercase tracking-widest">MY SKILLS</h2>
+      </div>
+
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <!-- Section Header -->
+        <div class="text-center mb-16">
+          <h2 class="text-sm uppercase font-bold text-[#F9CA6F] tracking-widest mb-2">Technical Stack</h2>
+          <h3 class="text-3xl sm:text-4xl font-extrabold text-white">Skills & Expertise</h3>
+          <div class="w-24 h-1 bg-gradient-to-r from-[#F9CA6F] to-[#38bdf8] mx-auto mt-4 rounded-full"></div>
+        </div>
+
+        <!-- Tech Stack Grid -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6">
+          <!-- Skill Card 1 - Laravel -->
+          <div class="glass-panel glass-panel-hover rounded-2xl p-6 border border-white/10 text-center flex flex-col items-center group">
+            <i class="devicon-laravel-original colored text-5xl mb-4 group-hover:scale-110 transition-transform"></i>
+            <h4 class="text-lg font-bold text-white mb-1">Laravel</h4>
+            <span class="text-xs font-semibold text-[#F9CA6F] bg-[#F9CA6F]/10 px-3 py-1 rounded-full border border-[#F9CA6F]/20">Framework</span>
+          </div>
+
+          <!-- Skill Card 2 - PHP -->
+          <div class="glass-panel glass-panel-hover rounded-2xl p-6 border border-white/10 text-center flex flex-col items-center group">
+            <i class="devicon-php-plain colored text-5xl mb-4 group-hover:scale-110 transition-transform"></i>
+            <h4 class="text-lg font-bold text-white mb-1">PHP</h4>
+            <span class="text-xs font-semibold text-[#F9CA6F] bg-[#F9CA6F]/10 px-3 py-1 rounded-full border border-[#F9CA6F]/20">Backend</span>
+          </div>
+
+          <!-- Skill Card 3 - Vue.js -->
+          <div class="glass-panel glass-panel-hover rounded-2xl p-6 border border-white/10 text-center flex flex-col items-center group">
+            <i class="devicon-vuejs-plain colored text-5xl mb-4 group-hover:scale-110 transition-transform"></i>
+            <h4 class="text-lg font-bold text-white mb-1">Vue.js</h4>
+            <span class="text-xs font-semibold text-[#38bdf8] bg-[#38bdf8]/10 px-3 py-1 rounded-full border border-[#38bdf8]/20">Frontend</span>
+          </div>
+
+          <!-- Skill Card 4 - React.js -->
+          <div class="glass-panel glass-panel-hover rounded-2xl p-6 border border-white/10 text-center flex flex-col items-center group">
+            <i class="devicon-react-original colored text-5xl mb-4 group-hover:scale-110 transition-transform"></i>
+            <h4 class="text-lg font-bold text-white mb-1">React.js</h4>
+            <span class="text-xs font-semibold text-[#38bdf8] bg-[#38bdf8]/10 px-3 py-1 rounded-full border border-[#38bdf8]/20">Frontend</span>
+          </div>
+
+          <!-- Skill Card 5 - MySQL -->
+          <div class="glass-panel glass-panel-hover rounded-2xl p-6 border border-white/10 text-center flex flex-col items-center group">
+            <i class="devicon-mysql-plain colored text-5xl mb-4 group-hover:scale-110 transition-transform"></i>
+            <h4 class="text-lg font-bold text-white mb-1">MySQL</h4>
+            <span class="text-xs font-semibold text-[#F9CA6F] bg-[#F9CA6F]/10 px-3 py-1 rounded-full border border-[#F9CA6F]/20">Database</span>
+          </div>
+
+          <!-- Skill Card 6 - JavaScript -->
+          <div class="glass-panel glass-panel-hover rounded-2xl p-6 border border-white/10 text-center flex flex-col items-center group">
+            <i class="devicon-javascript-plain colored text-5xl mb-4 group-hover:scale-110 transition-transform"></i>
+            <h4 class="text-lg font-bold text-white mb-1">JavaScript</h4>
+            <span class="text-xs font-semibold text-[#F9CA6F] bg-[#F9CA6F]/10 px-3 py-1 rounded-full border border-[#F9CA6F]/20">Language</span>
+          </div>
+
+          <!-- Skill Card 7 - Tailwind CSS -->
+          <div class="glass-panel glass-panel-hover rounded-2xl p-6 border border-white/10 text-center flex flex-col items-center group">
+            <i class="devicon-tailwindcss-original colored text-5xl mb-4 group-hover:scale-110 transition-transform"></i>
+            <h4 class="text-lg font-bold text-white mb-1">Tailwind CSS</h4>
+            <span class="text-xs font-semibold text-[#38bdf8] bg-[#38bdf8]/10 px-3 py-1 rounded-full border border-[#38bdf8]/20">Styling</span>
+          </div>
+
+          <!-- Skill Card 8 - RESTful APIs -->
+          <div class="glass-panel glass-panel-hover rounded-2xl p-6 border border-white/10 text-center flex flex-col items-center group">
+            <div class="w-12 h-12 rounded-full bg-[#F9CA6F]/10 text-[#F9CA6F] flex items-center justify-center text-2xl font-bold mb-4 group-hover:scale-110 transition-transform">
+              <i class="fas fa-network-wired"></i>
+            </div>
+            <h4 class="text-lg font-bold text-white mb-1">REST APIs</h4>
+            <span class="text-xs font-semibold text-[#F9CA6F] bg-[#F9CA6F]/10 px-3 py-1 rounded-full border border-[#F9CA6F]/20">Architecture</span>
+          </div>
+
+          <!-- Skill Card 9 - Git & GitHub -->
+          <div class="glass-panel glass-panel-hover rounded-2xl p-6 border border-white/10 text-center flex flex-col items-center group">
+            <i class="devicon-git-plain colored text-5xl mb-4 group-hover:scale-110 transition-transform"></i>
+            <h4 class="text-lg font-bold text-white mb-1">Git & GitHub</h4>
+            <span class="text-xs font-semibold text-[#38bdf8] bg-[#38bdf8]/10 px-3 py-1 rounded-full border border-[#38bdf8]/20">Version Control</span>
+          </div>
+
+          <!-- Skill Card 10 - AWS & Cloud Hosting -->
+          <div class="glass-panel glass-panel-hover rounded-2xl p-6 border border-white/10 text-center flex flex-col items-center group">
+            <i class="fab fa-aws text-[#FF9900] text-5xl mb-4 group-hover:scale-110 transition-transform"></i>
+            <h4 class="text-lg font-bold text-white mb-1">AWS & S3</h4>
+            <span class="text-xs font-semibold text-[#F9CA6F] bg-[#F9CA6F]/10 px-3 py-1 rounded-full border border-[#F9CA6F]/20">Cloud Storage</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESUME & TIMELINE SECTION (Chronological Bottom-to-Top: School -> BCA -> Freelance -> MCA -> Shuru-up Full Stack) -->
+    <section id="resume" class="relative py-28 overflow-hidden" x-data="{ activeTimeline: 'all' }">
+      <!-- Background Title Overlay -->
+      <div class="absolute top-10 left-0 w-full flex justify-center pointer-events-none select-none opacity-5">
+        <h2 class="text-7xl sm:text-9xl font-black text-white uppercase tracking-widest">RESUME</h2>
+      </div>
+
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <!-- Section Header -->
+        <div class="text-center mb-12">
+          <h2 class="text-sm uppercase font-bold text-[#F9CA6F] tracking-widest mb-2">My Journey</h2>
+          <h3 class="text-3xl sm:text-4xl font-extrabold text-white">Experience & Education</h3>
+          <div class="w-24 h-1 bg-gradient-to-r from-[#F9CA6F] to-[#38bdf8] mx-auto mt-4 rounded-full"></div>
+        </div>
+
+        <!-- Balanced Switcher Tabs -->
+        <div class="flex justify-center items-center gap-3 mb-12">
+          <button @click="activeTimeline = 'all'" :class="activeTimeline === 'all' ? 'bg-[#F9CA6F] text-[#070b14] font-bold shadow-[0_0_20px_rgba(249,202,111,0.4)]' : 'glass-panel text-gray-300 hover:text-white border border-white/10'" class="px-6 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all flex items-center gap-2">
+            <i class="fas fa-[#timeline]"></i> Complete Journey
+          </button>
+          <button @click="activeTimeline = 'experience'" :class="activeTimeline === 'experience' ? 'bg-[#F9CA6F] text-[#070b14] font-bold shadow-[0_0_20px_rgba(249,202,111,0.4)]' : 'glass-panel text-gray-300 hover:text-white border border-white/10'" class="px-6 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all flex items-center gap-2">
+            <i class="fas fa-briefcase"></i> Work Experience
+          </button>
+          <button @click="activeTimeline = 'education'" :class="activeTimeline === 'education' ? 'bg-[#F9CA6F] text-[#070b14] font-bold shadow-[0_0_20px_rgba(249,202,111,0.4)]' : 'glass-panel text-gray-300 hover:text-white border border-white/10'" class="px-6 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all flex items-center gap-2">
+            <i class="fas fa-graduation-cap"></i> Education
+          </button>
+        </div>
+
+        <!-- Centered Timeline (Strict Chronological Bottom-to-Up: Top = Most Recent (Shuru-up), Bottom = Oldest (School)) -->
+        <div class="relative border-l-2 border-white/10 ml-4 sm:ml-8 space-y-8 pl-6 sm:pl-10">
+
+          <!-- 1. Top (Most Recent Work): Shuru-up Full Stack Developer (Feb 2024 – Present) -->
+          <div x-show="activeTimeline === 'all' || activeTimeline === 'experience'" class="relative group" x-transition>
+            <div class="absolute -left-[35px] sm:-left-[51px] top-1 w-6 h-6 rounded-full bg-[#070b14] border-2 border-[#F9CA6F] flex items-center justify-center group-hover:bg-[#F9CA6F] transition-colors">
+              <i class="fas fa-briefcase text-[10px] text-[#F9CA6F] group-hover:text-[#070b14]"></i>
+            </div>
+            <div class="glass-panel glass-panel-hover rounded-2xl p-6 border border-white/10">
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                <span class="text-xs font-bold text-[#F9CA6F] bg-[#F9CA6F]/10 px-3 py-1 rounded-full border border-[#F9CA6F]/20">Work Experience • Feb 2024 – Present</span>
+                <span class="text-xs font-semibold text-gray-400"><i class="fas fa-building text-[#38bdf8] mr-1"></i> Shuru-up</span>
+              </div>
+              <h4 class="text-xl font-bold text-white">Full Stack Developer</h4>
+              <p class="text-sm font-semibold text-[#38bdf8] mb-3">Shuru-up, Ahmedabad</p>
+              <p class="text-gray-300 text-sm leading-relaxed">
+                Building scalable pre-IPO & private market investment platforms, developing interactive frontends using TALL Stack, implementing Laravel web crawlers for real-time market scraping, and managing MySQL & AWS S3 cloud document infrastructure.
+              </p>
+            </div>
+          </div>
+
+          <!-- 2. MCA (June 2024 – 2026) -->
+          <div x-show="activeTimeline === 'all' || activeTimeline === 'education'" class="relative group" x-transition>
+            <div class="absolute -left-[35px] sm:-left-[51px] top-1 w-6 h-6 rounded-full bg-[#070b14] border-2 border-[#38bdf8] flex items-center justify-center group-hover:bg-[#38bdf8] transition-colors">
+              <i class="fas fa-graduation-cap text-[10px] text-[#38bdf8] group-hover:text-[#070b14]"></i>
+            </div>
+            <div class="glass-panel glass-panel-hover rounded-2xl p-6 border border-white/10">
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                <span class="text-xs font-bold text-[#38bdf8] bg-[#38bdf8]/10 px-3 py-1 rounded-full border border-[#38bdf8]/20">Education • June 2024 – 2026</span>
+                <span class="text-xs font-semibold text-gray-400"><i class="fas fa-map-marker-alt text-[#F9CA6F] mr-1"></i> Ahmedabad</span>
+              </div>
+              <h4 class="text-xl font-bold text-white">Master of Computer Applications (MCA)</h4>
+              <p class="text-sm font-semibold text-[#F9CA6F] mb-3">LJ University, Ahmedabad</p>
+              <p class="text-gray-300 text-sm leading-relaxed">
+                Advancing in software engineering, system architecture, enterprise application development, web crawlers, and API integrations.
+              </p>
+            </div>
+          </div>
+
+          <!-- 3. Freelance Full Stack Developer (Jan 2023 – Present) -->
+          <div x-show="activeTimeline === 'all' || activeTimeline === 'experience'" class="relative group" x-transition>
+            <div class="absolute -left-[35px] sm:-left-[51px] top-1 w-6 h-6 rounded-full bg-[#070b14] border-2 border-[#F9CA6F] flex items-center justify-center group-hover:bg-[#F9CA6F] transition-colors">
+              <i class="fas fa-briefcase text-[10px] text-[#F9CA6F] group-hover:text-[#070b14]"></i>
+            </div>
+            <div class="glass-panel glass-panel-hover rounded-2xl p-6 border border-white/10">
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                <span class="text-xs font-bold text-[#F9CA6F] bg-[#F9CA6F]/10 px-3 py-1 rounded-full border border-[#F9CA6F]/20">Work Experience • Jan 2023 – Present</span>
+                <span class="text-xs font-semibold text-gray-400"><i class="fas fa-[#laptop-code] text-[#F9CA6F] mr-1"></i> Freelance</span>
+              </div>
+              <h4 class="text-xl font-bold text-white">Freelance Full Stack Developer</h4>
+              <p class="text-sm font-semibold text-[#38bdf8] mb-3">Independent / Client Projects</p>
+              <p class="text-gray-300 text-sm leading-relaxed">
+                Delivering full-stack web applications, custom management portals (Gym Management Systems, Acard Admin), AI healthcare tools, database architectures, and API integrations for client projects.
+              </p>
+            </div>
+          </div>
+
+          <!-- 4. BCA (2021 – 2024) -->
+          <div x-show="activeTimeline === 'all' || activeTimeline === 'education'" class="relative group" x-transition>
+            <div class="absolute -left-[35px] sm:-left-[51px] top-1 w-6 h-6 rounded-full bg-[#070b14] border-2 border-[#38bdf8] flex items-center justify-center group-hover:bg-[#38bdf8] transition-colors">
+              <i class="fas fa-graduation-cap text-[10px] text-[#38bdf8] group-hover:text-[#070b14]"></i>
+            </div>
+            <div class="glass-panel glass-panel-hover rounded-2xl p-6 border border-white/10">
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                <span class="text-xs font-bold text-[#38bdf8] bg-[#38bdf8]/10 px-3 py-1 rounded-full border border-[#38bdf8]/20">Education • 2021 – 2024</span>
+                <span class="text-xs font-semibold text-gray-400"><i class="fas fa-map-marker-alt text-[#F9CA6F] mr-1"></i> Ahmedabad</span>
+              </div>
+              <h4 class="text-xl font-bold text-white">Bachelor of Computer Applications (BCA)</h4>
+              <p class="text-sm font-semibold text-[#F9CA6F] mb-3">LJ University, Ahmedabad</p>
+              <p class="text-gray-300 text-sm leading-relaxed">
+                Strong foundation in programming, web development, data structures, relational database management, and system analysis.
+              </p>
+            </div>
+          </div>
+
+          <!-- 5. Bottom (Oldest): Higher Secondary Education (2019 – 2021) -->
+          <div x-show="activeTimeline === 'all' || activeTimeline === 'education'" class="relative group" x-transition>
+            <div class="absolute -left-[35px] sm:-left-[51px] top-1 w-6 h-6 rounded-full bg-[#070b14] border-2 border-[#38bdf8] flex items-center justify-center group-hover:bg-[#38bdf8] transition-colors">
+              <i class="fas fa-graduation-cap text-[10px] text-[#38bdf8] group-hover:text-[#070b14]"></i>
+            </div>
+            <div class="glass-panel glass-panel-hover rounded-2xl p-6 border border-white/10">
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                <span class="text-xs font-bold text-[#38bdf8] bg-[#38bdf8]/10 px-3 py-1 rounded-full border border-[#38bdf8]/20">Education • 2019 – 2021</span>
+                <span class="text-xs font-semibold text-gray-400"><i class="fas fa-school text-[#38bdf8] mr-1"></i> Ahmedabad</span>
+              </div>
+              <h4 class="text-xl font-bold text-white">Higher Secondary Education</h4>
+              <p class="text-sm font-semibold text-[#F9CA6F] mb-3">Nelsons High School, Ahmedabad</p>
+              <p class="text-gray-300 text-sm leading-relaxed">
+                Completed higher secondary education with strong focus in mathematics, logic, and computer science.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- PORTFOLIO / PROJECTS SECTION -->
+    <section id="portfolio" class="relative py-28 overflow-hidden" x-data="{ currentTab: 'all' }">
+      <!-- Background Title Overlay -->
+      <div class="absolute top-10 left-0 w-full flex justify-center pointer-events-none select-none opacity-5">
+        <h2 class="text-7xl sm:text-9xl font-black text-white uppercase tracking-widest">PORTFOLIO</h2>
+      </div>
+
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <!-- Section Header -->
+        <div class="text-center mb-12">
+          <h2 class="text-sm uppercase font-bold text-[#F9CA6F] tracking-widest mb-2">My Work</h2>
+          <h3 class="text-3xl sm:text-4xl font-extrabold text-white">Featured Projects</h3>
+          <div class="w-24 h-1 bg-gradient-to-r from-[#F9CA6F] to-[#38bdf8] mx-auto mt-4 rounded-full"></div>
+        </div>
+
+        <!-- Filter Tab Buttons -->
+        <div class="flex flex-wrap justify-center items-center gap-3 mb-12">
+          <button @click="currentTab = 'all'" :class="currentTab === 'all' ? 'bg-[#F9CA6F] text-[#070b14] font-bold shadow-[0_0_20px_rgba(249,202,111,0.4)]' : 'glass-panel text-gray-300 hover:text-white border border-white/10'" class="px-6 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all">
+            All Projects
+          </button>
+          <button @click="currentTab = 'github'" :class="currentTab === 'github' ? 'bg-[#F9CA6F] text-[#070b14] font-bold shadow-[0_0_20px_rgba(249,202,111,0.4)]' : 'glass-panel text-gray-300 hover:text-white border border-white/10'" class="px-6 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all">
+            GitHub Open Source
+          </button>
+          <button @click="currentTab = 'laravel'" :class="currentTab === 'laravel' ? 'bg-[#F9CA6F] text-[#070b14] font-bold shadow-[0_0_20px_rgba(249,202,111,0.4)]' : 'glass-panel text-gray-300 hover:text-white border border-white/10'" class="px-6 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all">
+            Laravel & PHP
+          </button>
+          <button @click="currentTab = 'freelance'" :class="currentTab === 'freelance' ? 'bg-[#F9CA6F] text-[#070b14] font-bold shadow-[0_0_20px_rgba(249,202,111,0.4)]' : 'glass-panel text-gray-300 hover:text-white border border-white/10'" class="px-6 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all">
+            Company & Freelance
+          </button>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+          <!-- Project Card 1: Shuru-up Private Market Investment Platform -->
+          <div x-show="currentTab === 'all' || currentTab === 'laravel' || currentTab === 'freelance'" class="glass-panel glass-panel-hover rounded-3xl border border-white/10 overflow-hidden flex flex-col group" x-transition>
+            <!-- Styled Banner Header -->
+            <div class="relative h-48 bg-gradient-to-br from-[#0d1f38] to-[#162a4d] p-6 flex flex-col justify-between overflow-hidden">
+              <div class="absolute -right-8 -bottom-8 w-36 h-36 bg-[#F9CA6F]/10 rounded-full blur-2xl"></div>
+              <div class="flex items-center justify-between relative z-10">
+                <span class="text-xs font-extrabold text-[#F9CA6F] bg-[#F9CA6F]/15 px-3 py-1 rounded-full border border-[#F9CA6F]/30 uppercase tracking-wider">Enterprise Company Platform</span>
+                <i class="devicon-laravel-original colored text-3xl"></i>
+              </div>
+              <div class="relative z-10">
+                <h4 class="text-2xl font-extrabold text-white">Shuru-up</h4>
+                <p class="text-xs text-[#38bdf8] font-semibold">Private Market Investment Platform</p>
+              </div>
+            </div>
+
+            <div class="p-6 flex-1 flex flex-col justify-between">
+              <div>
+                <p class="text-gray-300 text-sm leading-relaxed mb-4">
+                  Built a pre-IPO and private market investment platform enabling users to discover and invest in unlisted shares and private equity. Developed interactive UI using TALL Stack, and implemented a Laravel web crawler to scrape and aggregate real-time market data with MySQL & AWS S3.
+                </p>
+
+                <!-- Tech Badges -->
+                <div class="flex flex-wrap gap-2 mb-6">
+                  <span class="text-[11px] font-semibold text-gray-300 bg-white/5 px-2.5 py-1 rounded-md border border-white/10">PHP Laravel</span>
+                  <span class="text-[11px] font-semibold text-gray-300 bg-white/5 px-2.5 py-1 rounded-md border border-white/10">TALL Stack</span>
+                  <span class="text-[11px] font-semibold text-gray-300 bg-white/5 px-2.5 py-1 rounded-md border border-white/10">MySQL</span>
+                  <span class="text-[11px] font-semibold text-gray-300 bg-white/5 px-2.5 py-1 rounded-md border border-white/10">AWS S3</span>
+                  <span class="text-[11px] font-semibold text-gray-300 bg-white/5 px-2.5 py-1 rounded-md border border-white/10">Web Crawler</span>
+                </div>
+              </div>
+
+              <!-- Action Links (Company Enterprise -> Details Modal) -->
+              <div class="flex items-center justify-between pt-4 border-t border-white/10">
+                <span class="inline-flex items-center gap-1.5 text-xs font-semibold text-gray-400">
+                  <i class="fas fa-lock text-xs text-[#F9CA6F]"></i> Company Enterprise Code
+                </span>
+                <button @click="modalData = { title: 'Shuru-up - Pre-IPO & Private Market Platform', image: 'image/stock-market.jpg', desc: 'Built a pre-IPO and private market investment platform enabling users to discover and invest in unlisted shares and private equity opportunities.\n\nKey Highlights:\n- Developed frontend using TALL Stack (Tailwind CSS, Alpine.js, Laravel, Livewire) for fast, interactive user experience.\n- Implemented Laravel-based web crawler to scrape and aggregate real-time market data.\n- Managed structured MySQL database & integrated AWS S3 for secure document management.', tech: ['PHP Laravel', 'TALL Stack', 'MySQL', 'AWS S3', 'Laravel Web Crawler'], github: '', live: '' }; modalOpen = true" class="inline-flex items-center gap-1.5 text-xs font-bold text-[#F9CA6F] hover:text-white transition-colors">
+                  Details <i class="fas fa-expand"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Card 2: StartupIncubate -->
+          <div x-show="currentTab === 'all' || currentTab === 'laravel' || currentTab === 'freelance'" class="glass-panel glass-panel-hover rounded-3xl border border-white/10 overflow-hidden flex flex-col group" x-transition>
+            <!-- Styled Banner Header -->
+            <div class="relative h-48 bg-gradient-to-br from-[#1b1433] to-[#2b1f4c] p-6 flex flex-col justify-between overflow-hidden">
+              <div class="absolute -right-8 -bottom-8 w-36 h-36 bg-[#38bdf8]/10 rounded-full blur-2xl"></div>
+              <div class="flex items-center justify-between relative z-10">
+                <span class="text-xs font-extrabold text-[#38bdf8] bg-[#38bdf8]/15 px-3 py-1 rounded-full border border-[#38bdf8]/30 uppercase tracking-wider">Enterprise Company Platform</span>
+                <i class="fas fa-rocket text-3xl text-[#38bdf8]"></i>
+              </div>
+              <div class="relative z-10">
+                <h4 class="text-2xl font-extrabold text-white">StartupIncubate</h4>
+                <p class="text-xs text-[#F9CA6F] font-semibold">Startup & Investor Portal</p>
+              </div>
+            </div>
+
+            <div class="p-6 flex-1 flex flex-col justify-between">
+              <div>
+                <p class="text-gray-300 text-sm leading-relaxed mb-4">
+                  Developed a startup incubation platform connecting early-stage startups with investors and funding opportunities. Built core modules for profile management, funding applications, and investor matching with AWS S3 pitch deck storage.
+                </p>
+
+                <!-- Tech Badges -->
+                <div class="flex flex-wrap gap-2 mb-6">
+                  <span class="text-[11px] font-semibold text-gray-300 bg-white/5 px-2.5 py-1 rounded-md border border-white/10">PHP</span>
+                  <span class="text-[11px] font-semibold text-gray-300 bg-white/5 px-2.5 py-1 rounded-md border border-white/10">Laravel</span>
+                  <span class="text-[11px] font-semibold text-gray-300 bg-white/5 px-2.5 py-1 rounded-md border border-white/10">MySQL</span>
+                  <span class="text-[11px] font-semibold text-gray-300 bg-white/5 px-2.5 py-1 rounded-md border border-white/10">AWS S3</span>
+                </div>
+              </div>
+
+              <!-- Action Links (Company Enterprise -> Details Modal) -->
+              <div class="flex items-center justify-between pt-4 border-t border-white/10">
+                <span class="inline-flex items-center gap-1.5 text-xs font-semibold text-gray-400">
+                  <i class="fas fa-lock text-xs text-[#F9CA6F]"></i> Company Enterprise Code
+                </span>
+                <button @click="modalData = { title: 'StartupIncubate - Incubation Platform', image: 'image/Cover.png', desc: 'Developed a startup incubation platform connecting early-stage startups with investors and funding opportunities.\n\nKey Highlights:\n- Built core modules for profile management, funding applications, and investor matching using PHP and Laravel.\n- Integrated MySQL for relational data storage and AWS S3 for secure cloud document storage of pitch decks.', tech: ['PHP', 'Laravel', 'MySQL', 'AWS S3'], github: '', live: '' }; modalOpen = true" class="inline-flex items-center gap-1.5 text-xs font-bold text-[#38bdf8] hover:text-white transition-colors">
+                  Details <i class="fas fa-expand"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Card 3: WinProFX Market Watch Dashboard (Vue.js + GitHub Open Source) -->
+          <div x-show="currentTab === 'all' || currentTab === 'laravel' || currentTab === 'github'" class="glass-panel glass-panel-hover rounded-3xl border border-white/10 overflow-hidden flex flex-col group" x-transition>
+            <!-- Styled Banner Header -->
+            <div class="relative h-48 bg-gradient-to-br from-[#0f2d24] to-[#154a3a] p-6 flex flex-col justify-between overflow-hidden">
+              <div class="absolute -right-8 -bottom-8 w-36 h-36 bg-emerald-400/10 rounded-full blur-2xl"></div>
+              <div class="flex items-center justify-between relative z-10">
+                <span class="text-xs font-extrabold text-emerald-400 bg-emerald-400/15 px-3 py-1 rounded-full border border-emerald-400/30 uppercase tracking-wider">GitHub Open Source</span>
+                <i class="devicon-vuejs-plain colored text-3xl"></i>
+              </div>
+              <div class="relative z-10">
+                <h4 class="text-2xl font-extrabold text-white">WinProFX</h4>
+                <p class="text-xs text-[#F9CA6F] font-semibold">Market Watch Dashboard</p>
+              </div>
+            </div>
+
+            <div class="p-6 flex-1 flex flex-col justify-between">
+              <div>
+                <p class="text-gray-300 text-sm leading-relaxed mb-4">
+                  Real-time stock and forex market watch dashboard built with Laravel, Vue.js, and WebSocket streaming featuring live price tickers, symbol search, watchlists, and interactive financial charts.
+                </p>
+
+                <!-- Tech Badges -->
+                <div class="flex flex-wrap gap-2 mb-6">
+                  <span class="text-[11px] font-semibold text-gray-300 bg-white/5 px-2.5 py-1 rounded-md border border-white/10">PHP Laravel</span>
+                  <span class="text-[11px] font-semibold text-emerald-400 bg-emerald-400/10 px-2.5 py-1 rounded-md border border-emerald-400/20">Vue.js</span>
+                  <span class="text-[11px] font-semibold text-gray-300 bg-white/5 px-2.5 py-1 rounded-md border border-white/10">Tailwind CSS</span>
+                  <span class="text-[11px] font-semibold text-gray-300 bg-white/5 px-2.5 py-1 rounded-md border border-white/10">WebSocket</span>
+                </div>
+              </div>
+
+              <!-- Action Links (GitHub Repository Available) -->
+              <div class="flex items-center justify-between pt-4 border-t border-white/10">
+                <a href="https://github.com/mohitjanwani/winprofx-market-watch-dashboard.git" target="_blank" class="inline-flex items-center gap-1.5 text-xs font-bold text-gray-300 hover:text-[#F9CA6F] transition-colors">
+                  <i class="fab fa-github text-base"></i> GitHub Code
+                </a>
+                <button @click="modalData = { title: 'WinProFX Market Watch Dashboard', image: 'image/stock-market.jpg', desc: 'Real-time financial market watch dashboard application built with Laravel, Vue.js, and WebSocket streaming.\n\nFeatures:\n- Vue.js reactive frontend for live market ticker tracking & symbol search\n- Watchlist management and real-time price change notifications\n- Interactive financial charting and clean dark dashboard UI', tech: ['PHP Laravel', 'Vue.js', 'Tailwind CSS', 'WebSocket'], github: 'https://github.com/mohitjanwani/winprofx-market-watch-dashboard.git', live: '' }; modalOpen = true" class="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-400 hover:text-white transition-colors">
+                  Details <i class="fas fa-expand"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Card 4: Acard Admin Portal (GitHub Repository Enabled) -->
+          <div x-show="currentTab === 'all' || currentTab === 'laravel' || currentTab === 'freelance' || currentTab === 'github'" class="glass-panel glass-panel-hover rounded-3xl border border-white/10 overflow-hidden flex flex-col group" x-transition>
+            <!-- Styled Banner Header -->
+            <div class="relative h-48 bg-gradient-to-br from-[#281b16] to-[#472c21] p-6 flex flex-col justify-between overflow-hidden">
+              <div class="absolute -right-8 -bottom-8 w-36 h-36 bg-[#F9CA6F]/10 rounded-full blur-2xl"></div>
+              <div class="flex items-center justify-between relative z-10">
+                <span class="text-xs font-extrabold text-[#F9CA6F] bg-[#F9CA6F]/15 px-3 py-1 rounded-full border border-[#F9CA6F]/30 uppercase tracking-wider">Freelance / GitHub Repo</span>
+                <i class="fas fa-credit-card text-3xl text-[#F9CA6F]"></i>
+              </div>
+              <div class="relative z-10">
+                <h4 class="text-2xl font-extrabold text-white">Acard Admin</h4>
+                <p class="text-xs text-[#38bdf8] font-semibold">Card Issuing & Management System</p>
+              </div>
+            </div>
+
+            <div class="p-6 flex-1 flex flex-col justify-between">
+              <div>
+                <p class="text-gray-300 text-sm leading-relaxed mb-4">
+                  Contributed to the development of the Acard admin portal for card issuing workflows, user management, transaction monitoring, and role-based access control (RBAC).
+                </p>
+
+                <!-- Tech Badges -->
+                <div class="flex flex-wrap gap-2 mb-6">
+                  <span class="text-[11px] font-semibold text-gray-300 bg-white/5 px-2.5 py-1 rounded-md border border-white/10">PHP</span>
+                  <span class="text-[11px] font-semibold text-gray-300 bg-white/5 px-2.5 py-1 rounded-md border border-white/10">Laravel</span>
+                  <span class="text-[11px] font-semibold text-gray-300 bg-white/5 px-2.5 py-1 rounded-md border border-white/10">MySQL</span>
+                  <span class="text-[11px] font-semibold text-gray-300 bg-white/5 px-2.5 py-1 rounded-md border border-white/10">REST API</span>
+                </div>
+              </div>
+
+              <!-- Action Links (GitHub Repository Available) -->
+              <div class="flex items-center justify-between pt-4 border-t border-white/10">
+                <a href="https://github.com/prince-116/acard_admin.git" target="_blank" class="inline-flex items-center gap-1.5 text-xs font-bold text-gray-300 hover:text-[#F9CA6F] transition-colors">
+                  <i class="fab fa-github text-base"></i> GitHub Code
+                </a>
+                <button @click="modalData = { title: 'Acard Admin Management System', image: 'image/Cover.png', desc: 'Contributed to the core backend architecture and frontend modules of Acard Admin system.\n\nKey Highlights:\n- Role-based access control (RBAC) permission management\n- User account verification and card issuance workflows\n- Financial transaction monitoring and reporting tables', tech: ['PHP', 'Laravel', 'MySQL', 'REST API'], github: 'https://github.com/prince-116/acard_admin.git', live: '' }; modalOpen = true" class="inline-flex items-center gap-1.5 text-xs font-bold text-[#F9CA6F] hover:text-white transition-colors">
+                  Details <i class="fas fa-expand"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Card 5: Blood Assistant AI/ML (GitHub Repository Enabled) -->
+          <div x-show="currentTab === 'all' || currentTab === 'github'" class="glass-panel glass-panel-hover rounded-3xl border border-white/10 overflow-hidden flex flex-col group" x-transition>
+            <!-- Styled Banner Header -->
+            <div class="relative h-48 bg-gradient-to-br from-[#3b1219] to-[#591d27] p-6 flex flex-col justify-between overflow-hidden">
+              <div class="absolute -right-8 -bottom-8 w-36 h-36 bg-rose-500/10 rounded-full blur-2xl"></div>
+              <div class="flex items-center justify-between relative z-10">
+                <span class="text-xs font-extrabold text-rose-400 bg-rose-400/15 px-3 py-1 rounded-full border border-rose-400/30 uppercase tracking-wider">AI Project / GitHub Repo</span>
+                <i class="fas fa-[#heart-pulse] text-3xl text-rose-400"></i>
+              </div>
+              <div class="relative z-10">
+                <h4 class="text-2xl font-extrabold text-white">Blood Assistant</h4>
+                <p class="text-xs text-[#38bdf8] font-semibold">AI Healthcare Assistant</p>
+              </div>
+            </div>
+
+            <div class="p-6 flex-1 flex flex-col justify-between">
+              <div>
+                <p class="text-gray-300 text-sm leading-relaxed mb-4">
+                  AI-powered healthcare assistant application designed to assist users with blood group donor matching, emergency request alerts, and health diagnostic queries.
+                </p>
+
+                <!-- Tech Badges -->
+                <div class="flex flex-wrap gap-2 mb-6">
+                  <span class="text-[11px] font-semibold text-gray-300 bg-white/5 px-2.5 py-1 rounded-md border border-white/10">Python</span>
+                  <span class="text-[11px] font-semibold text-gray-300 bg-white/5 px-2.5 py-1 rounded-md border border-white/10">AI / ML</span>
+                  <span class="text-[11px] font-semibold text-gray-300 bg-white/5 px-2.5 py-1 rounded-md border border-white/10">Healthcare</span>
+                </div>
+              </div>
+
+              <!-- Action Links (GitHub Repository Available) -->
+              <div class="flex items-center justify-between pt-4 border-t border-white/10">
+                <a href="https://github.com/mohitjanwani/blood-assistant.git" target="_blank" class="inline-flex items-center gap-1.5 text-xs font-bold text-gray-300 hover:text-[#F9CA6F] transition-colors">
+                  <i class="fab fa-github text-base"></i> GitHub Code
+                </a>
+                <button @click="modalData = { title: 'Blood Assistant - AI Healthcare Platform', image: 'image/mohitjanwani.jpg', desc: 'AI-driven application assisting users with medical blood donor matching and diagnostic assistance.\n\nKey Highlights:\n- Automated blood group compatibility matching\n- Donor location filtering & emergency alert notifications\n- Machine learning assist model for user guidance', tech: ['Python', 'AI / ML', 'Flask', 'Healthcare'], github: 'https://github.com/mohitjanwani/blood-assistant.git', live: '' }; modalOpen = true" class="inline-flex items-center gap-1.5 text-xs font-bold text-rose-400 hover:text-white transition-colors">
+                  Details <i class="fas fa-expand"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Card 6: Gym Management System -->
+          <div x-show="currentTab === 'all' || currentTab === 'laravel' || currentTab === 'freelance'" class="glass-panel glass-panel-hover rounded-3xl border border-white/10 overflow-hidden flex flex-col group" x-transition>
+            <!-- Styled Banner Header -->
+            <div class="relative h-48 bg-gradient-to-br from-[#1a2332] to-[#25354b] p-6 flex flex-col justify-between overflow-hidden">
+              <div class="absolute -right-8 -bottom-8 w-36 h-36 bg-[#38bdf8]/10 rounded-full blur-2xl"></div>
+              <div class="flex items-center justify-between relative z-10">
+                <span class="text-xs font-extrabold text-[#38bdf8] bg-[#38bdf8]/15 px-3 py-1 rounded-full border border-[#38bdf8]/30 uppercase tracking-wider">Freelance Web App</span>
+                <i class="fas fa-[#dumbbell] text-3xl text-[#38bdf8]"></i>
+              </div>
+              <div class="relative z-10">
+                <h4 class="text-2xl font-extrabold text-white">Gym Management System</h4>
+                <p class="text-xs text-[#F9CA6F] font-semibold">Membership & Renewal Portal</p>
+              </div>
+            </div>
+
+            <div class="p-6 flex-1 flex flex-col justify-between">
+              <div>
+                <p class="text-gray-300 text-sm leading-relaxed mb-4">
+                  Developed a robust system to manage member details, memberships, and trainer schedules with secure role-based access control (RBAC), renewal tracking, and automated expiry notifications.
+                </p>
+
+                <!-- Tech Badges -->
+                <div class="flex flex-wrap gap-2 mb-6">
+                  <span class="text-[11px] font-semibold text-gray-300 bg-white/5 px-2.5 py-1 rounded-md border border-white/10">PHP</span>
+                  <span class="text-[11px] font-semibold text-gray-300 bg-white/5 px-2.5 py-1 rounded-md border border-white/10">Laravel</span>
+                  <span class="text-[11px] font-semibold text-gray-300 bg-white/5 px-2.5 py-1 rounded-md border border-white/10">MySQL</span>
+                  <span class="text-[11px] font-semibold text-gray-300 bg-white/5 px-2.5 py-1 rounded-md border border-white/10">RBAC</span>
+                </div>
+              </div>
+
+              <!-- Action Links (Details Modal) -->
+              <div class="flex items-center justify-between pt-4 border-t border-white/10">
+                <span class="inline-flex items-center gap-1.5 text-xs font-semibold text-gray-400">
+                  <i class="fas fa-cube text-xs text-[#38bdf8]"></i> Web Application
+                </span>
+                <button @click="modalData = { title: 'Gym Management System', image: 'image/Cover.png', desc: 'Robust management portal built with Laravel to streamline gym operations.\n\nKey Highlights:\n- Member profile management, subscription plans & trainer scheduling\n- Role-based access control (RBAC) for admins, staff, and members\n- Renewal tracking & automated expiry notification alerts to reduce manual follow-ups', tech: ['PHP', 'Laravel', 'MySQL', 'RBAC'], github: '', live: '' }; modalOpen = true" class="inline-flex items-center gap-1.5 text-xs font-bold text-[#38bdf8] hover:text-white transition-colors">
+                  Details <i class="fas fa-expand"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- PROJECT DETAIL MODAL -->
+      <div x-show="modalOpen" x-cloak class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md" @keydown.escape.window="modalOpen = false" x-transition>
+        <div class="glass-panel max-w-2xl w-full rounded-3xl border border-white/20 p-6 sm:p-8 relative max-h-[90vh] overflow-y-auto" @click.outside="modalOpen = false">
+          <!-- Close Button -->
+          <button @click="modalOpen = false" class="absolute top-6 right-6 w-10 h-10 rounded-full bg-white/10 text-white hover:bg-[#F9CA6F] hover:text-[#070b14] flex items-center justify-center transition-colors">
+            <i class="fas fa-times text-lg"></i>
+          </button>
+
+          <!-- Modal Title -->
+          <h3 class="text-2xl font-bold text-white mb-3" x-text="modalData.title"></h3>
+          
+          <div class="flex flex-wrap gap-2 mb-4">
+            <template x-for="t in modalData.tech" :key="t">
+              <span class="text-xs font-semibold text-[#F9CA6F] bg-[#F9CA6F]/10 px-3 py-1 rounded-full border border-[#F9CA6F]/30" x-text="t"></span>
+            </template>
+          </div>
+
+          <div class="p-4 bg-white/5 rounded-2xl border border-white/10 mb-6">
+            <p class="text-gray-200 text-sm leading-relaxed whitespace-pre-line" x-text="modalData.desc"></p>
+          </div>
+
+          <div class="flex items-center justify-end gap-4 pt-4 border-t border-white/10">
+            <template x-if="modalData.github">
+              <a :href="modalData.github" target="_blank" class="px-5 py-2.5 rounded-full text-xs font-bold bg-[#F9CA6F] text-[#070b14] hover:bg-[#f59e0b] transition-all flex items-center gap-2">
+                <i class="fab fa-github text-base"></i> View GitHub Repository
+              </a>
+            </template>
+            <button @click="modalOpen = false" class="px-6 py-2.5 rounded-full text-xs font-bold bg-white/10 text-white hover:bg-white/20 transition-all">
+              Close Window
             </button>
           </div>
         </div>
-
-        <!-- Mobile Navigation Panel - Positioned right after nav -->
-        <div x-show="mobileMenuOpen" x-cloak @click.outside="mobileMenuOpen = false"
-          @keydown.escape.window="mobileMenuOpen = false"
-          class="absolute top-full left-0 right-0 mobile-nav-overlay shadow-lg z-40 lg:hidden" tabindex="0"
-          x-transition:enter="transition ease-out duration-300"
-          x-transition:enter-start="transform -translate-y-full opacity-0"
-          x-transition:enter-end="transform translate-y-0 opacity-100"
-          x-transition:leave="transition ease-in duration-200"
-          x-transition:leave-start="transform translate-y-0 opacity-100"
-          x-transition:leave-end="transform -translate-y-full opacity-0">
-          <!-- Navigation Links -->
-          <div class="px-6 py-4">
-            <nav class="space-y-3">
-              <a href="#home" @click="mobileMenuOpen = false"
-                class="block text-white text-base font-medium hover:text-[#F9CA6F] transition-colors uppercase py-2">
-                Home
-              </a>
-              <a href="#about" @click="mobileMenuOpen = false"
-                class="block text-white text-base font-medium hover:text-[#F9CA6F] transition-colors uppercase py-2">
-                About
-              </a>
-              <a href="#resume" @click="mobileMenuOpen = false"
-                class="block text-white text-base font-medium hover:text-[#F9CA6F] transition-colors uppercase py-2">
-                Resume
-              </a>
-              <a href="#portfolio" @click="mobileMenuOpen = false"
-                class="block text-white text-base font-medium hover:text-[#F9CA6F] transition-colors uppercase py-2">
-                Portfolio
-              </a>
-              <a href="#blog" @click="mobileMenuOpen = false"
-                class="block text-white text-base font-medium hover:text-[#F9CA6F] transition-colors uppercase py-2">
-                Blog
-              </a>
-              <a href="#contact" @click="mobileMenuOpen = false"
-                class="block text-white text-base font-medium hover:text-[#F9CA6F] transition-colors uppercase py-2">
-                Contact
-              </a>
-            </nav>
-          </div>
-        </div>
-      </nav>
-
-      <!-- Content Container -->
-      <div class="relative z-10 flex flex-col items-center text-center px-3 pt-32 pb-20 md:pt-40 lg:pt-16 lg:mt-65">
-        <!-- Main Heading -->
-        <h1 class="text-5xl font-bold text-white mb-5">
-          Hi, I am <span class="text-[#F9CA6F]">Mohit Janwani</span>
-        </h1>
-
-        <!-- Professional Description -->
-        <p class="text-gray-300 max-w-2xl mb-6 break-normal">
-          I am a Full Stack Developer skilled in building scalable web
-          applications with clean and efficient code.
-          <!-- <br /> -->
-          I also specialize in creating responsive, interactive websites with
-          smooth animations to enhance user experience.
-        </p>
-
-        <!-- Social Media Icons -->
-        <div class="flex space-x-4 mb-5">
-          <a href="https://github.com/mohitjanwani" target="_blank"
-            class="w-10 h-10 rounded-full border border-gray-600 flex items-center justify-center text-white hover:bg-[#F9CA6F] hover:text-[#0d2538] hover:border-[#F9CA6F] transition-all">
-            <i class="fab fa-github"></i>
-          </a>
-          <a href="https://x.com/mohit_janwani" target="_blank"
-            class="w-10 h-10 rounded-full border border-gray-600 flex items-center justify-center text-white hover:bg-[#F9CA6F] hover:text-[#0d2538] hover:border-[#F9CA6F] transition-all">
-            <i class="fab fa-twitter"></i>
-          </a>
-
-          <a href="https://www.linkedin.com/in/mohitjanwani/" target="_blank"
-            class="w-10 h-10 rounded-full border border-gray-600 flex items-center justify-center text-white hover:bg-[#F9CA6F] hover:text-[#0d2538] hover:border-[#F9CA6F] transition-all">
-            <i class="fab fa-linkedin"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <!-- About Me Section -->
-    <section id="about" class="relative py-30">
-      <!-- Background Text -->
-      <div class="absolute top-0 left-0 w-full flex justify-center items-start h-full overflow-hidden z-0 opacity-4"
-        style="pointer-events: none">
-        <h1 class="text-[5rem] font-bold text-[white] whitespace-nowrap mt-15">
-          ABOUT ME
-        </h1>
-      </div>
-
-      <!-- Content Container -->
-      <div class="max-w-6xl mx-auto z-10 px-4 sm:px-6">
-        <div class="flex flex-col-reverse md:flex-row items-center gap-12">
-          <!-- Section Title -->
-          <div class="w-full flex justify-center md:justify-center -mt-8">
-            <div class="text-center md:text-center">
-              <h2 class="text-2xl font-bold text-[#F9CA6F] uppercase mb-2">
-                ABOUT ME
-              </h2>
-              <div class="relative w-full md:w-48 h-0.5 bg-gray-800">
-                <div class="absolute left-1/4 right-1/4 top-0 h-full bg-[#F9CA6F]"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="mt-12 flex flex-col lg:flex-row gap-12">
-          <!-- Profile Image -->
-          <div class="w-full flex justify-center">
-            <div class="p-3 w-full">
-              <img src="image/mohit-edit.png" alt="Mohit Janwani" class="w-full" />
-            </div>
-          </div>
-
-          <!-- Profile Information -->
-          <div class="w-full justify-center">
-            <h3 class="text-4xl text-white mb-4 mt-3 text-left">
-              Hi There! I'm Mohit Janwani
-            </h3>
-            <h4 class="text-2xl text-[#F9CA6F] text-left mb-2">
-              Software Developer
-            </h4>
-
-            <p class="text-gray-300 mb-6 leading-relaxed">
-              I am a Software Developer with expertise in Laravel and modern
-              frontend technologies, specializing in scalable web
-              applications. Passionate about user experience and performance,
-              I continuously refine my skills to build high-quality,
-              innovative solutions.
-            </p>
-
-            <!-- Personal Details -->
-            <div class="flex flex-col space-y-4">
-              <div class="flex items-center">
-                <p class="text-gray-400 w-28">Birthday</p>
-                <p class="text-white">:</p>
-                <p class="text-white ml-4">October 21, 2003</p>
-              </div>
-
-              <div class="flex items-center">
-                <p class="text-gray-400 w-28">Phone</p>
-                <p class="text-white">:</p>
-                <p class="text-white ml-4">+91 8799051416</p>
-              </div>
-
-              <div class="flex items-center">
-                <p class="text-gray-400 w-28">Email</p>
-                <p class="text-white">:</p>
-                <p class="text-white ml-4">mohitjanwani2110@gmail.com</p>
-              </div>
-
-              <div class="flex items-center">
-                <p class="text-gray-400 w-28">From</p>
-                <p class="text-white">:</p>
-                <p class="text-white ml-4">Ahmedabad, Gujarat, India</p>
-              </div>
-
-              <div class="flex items-center">
-                <p class="text-gray-400 w-28">Language</p>
-                <p class="text-white">:</p>
-                <p class="text-white ml-4">English, Hindi, Gujarati</p>
-              </div>
-
-              <div class="flex items-center">
-                <p class="text-gray-400 w-28">Freelance</p>
-                <p class="text-white">:</p>
-                <p class="text-white ml-4">Available</p>
-              </div>
-            </div>
-
-            <!-- Resume Button -->
-            <div class="mt-10">
-              <a href="./image/mohitjanwani.pdf" target="_blank"
-                class="inline-block px-8 py-3 bg-[#F9CA6F] text-[#0d2538] font-semibold rounded-full hover:bg-[#e9ba5f] transition-all">
-                Resume
-                <i class="fas fa-arrow-right ml-2"></i>
-              </a>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="services" class="relative py-30">
-      <div class="absolute top-0 left-0 w-full flex justify-center items-start h-full overflow-hidden z-0 opacity-4">
-        <h1 class="text-[5rem] font-bold text-[white] whitespace-nowrap mt-15">
-          SERVICES
-        </h1>
-      </div>
-      <div class="max-w-6xl mx-auto z-10">
-        <div class="flex flex-col md:flex-row items-center gap-12">
-          <!-- Section Title -->
-          <div class="w-full flex justify-center md:justify-center mb-16 -mt-8">
-            <div class="text-center">
-              <h2 class="text-2xl font-bold text-[#F9CA6F] uppercase mb-2 relative">
-                SERVICES
-              </h2>
-              <div class="relative w-48 h-0.5 bg-gray-800">
-                <div class="absolute left-1/4 right-1/4 top-0 h-full bg-[#F9CA6F]"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Services Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-10 gap-x-3 relative">
-          <!-- Service Card 1 - Sketches -->
-          <div
-            class="service-card group bg-[#101624] py-10 px-8 border border-solid border-[#232935] rounded text-center flex flex-col items-center justify-center mx-4 transition-all duration-300">
-            <div class="flex justify-center">
-              <div
-                class="icon-border w-[90px] h-[90px] border-[0.5px] border-solid border-[#3f4551] rounded-full bg-[#070d1b] flex items-center justify-center overflow-hidden mb-[28px] transition-all duration-300">
-                <i class="fas fa-code text-white text-4xl transition-all duration-300"></i>
-              </div>
-            </div>
-            <h2 class="text-[#fdfeff] mb-[10px] text-[22px] transition-all duration-300">
-              Web Development
-            </h2>
-            <p class="text-[#a9adb8] text-[16px]">
-              Building scalable and dynamic web applications using Laravel and
-              modern frontend technologies.
-            </p>
-          </div>
-          <div
-            class="service-card group bg-[#101624] py-10 px-8 border border-solid border-[#232935] rounded text-center flex flex-col items-center justify-center mx-4 transition-all duration-300">
-            <div class="flex justify-center">
-              <div
-                class="icon-border w-[90px] h-[90px] border-[0.5px] border-solid border-[#3f4551] rounded-full bg-[#070d1b] flex items-center justify-center overflow-hidden mb-[28px] transition-all duration-300">
-                <i class="fas fa-paint-brush text-white text-4xl transition-all duration-300"></i>
-              </div>
-            </div>
-            <h2 class="text-[#fdfeff] mb-[10px] text-[22px] transition-all duration-300">
-              Frontend Development
-            </h2>
-            <p class="text-[#a9adb8] text-[16px]">
-              Creating responsive, interactive, and visually appealing user
-              interfaces with smooth animations.
-            </p>
-          </div>
-          <div
-            class="service-card group bg-[#101624] py-10 px-8 border border-solid border-[#232935] rounded text-center flex flex-col items-center justify-center mx-4 transition-all duration-300">
-            <div class="flex justify-center">
-              <div
-                class="icon-border w-[90px] h-[90px] border-[0.5px] border-solid border-[#3f4551] rounded-full bg-[#070d1b] flex items-center justify-center overflow-hidden mb-[28px] transition-all duration-300">
-                <i class="fas fa-server text-white text-4xl transition-all duration-300"></i>
-              </div>
-            </div>
-            <h2 class="text-[#fdfeff] mb-[10px] text-[22px] transition-all duration-300">
-              Backend Development
-            </h2>
-            <p class="text-[#a9adb8] text-[16px]">
-              Developing efficient, secure, and well-structured backend
-              systems with Laravel.
-            </p>
-          </div>
-          <div
-            class="service-card group bg-[#101624] py-10 px-8 border border-solid border-[#232935] rounded text-center flex flex-col items-center justify-center mx-4 transition-all duration-300">
-            <div class="flex justify-center">
-              <div
-                class="icon-border w-[90px] h-[90px] border-[0.5px] border-solid border-[#3f4551] rounded-full bg-[#070d1b] flex items-center justify-center overflow-hidden mb-[28px] transition-all duration-300">
-                <i class="fas fa-tachometer-alt text-white text-4xl transition-all duration-300"></i>
-              </div>
-            </div>
-            <h2 class="text-[#fdfeff] mb-[10px] text-[22px] transition-all duration-300">
-              Performance Optimization
-            </h2>
-            <p class="text-[#a9adb8] text-[16px]">
-              Enhancing website speed, efficiency, and user experience through
-              clean and optimized code.
-            </p>
-          </div>
-          <div
-            class="service-card group bg-[#101624] py-10 px-8 border border-solid border-[#232935] rounded text-center flex flex-col items-center justify-center mx-4 transition-all duration-300">
-            <div class="flex justify-center">
-              <div
-                class="icon-border w-[90px] h-[90px] border-[0.5px] border-solid border-[#3f4551] rounded-full bg-[#070d1b] flex items-center justify-center overflow-hidden mb-[28px] transition-all duration-300">
-                <i class="fas fa-plug text-white text-4xl transition-all duration-300"></i>
-              </div>
-            </div>
-            <h2 class="text-[#fdfeff] mb-[10px] text-[22px] transition-all duration-300">
-              API Development
-            </h2>
-            <p class="text-[#a9adb8] text-[16px]">
-              Creating and integrating RESTful APIs for seamless data
-              communication between frontend and backend.
-            </p>
-          </div>
-          <div
-            class="service-card group bg-[#101624] py-10 px-8 border border-solid border-[#232935] rounded text-center flex flex-col items-center justify-center mx-4 transition-all duration-300">
-            <div class="flex justify-center">
-              <div
-                class="icon-border w-[90px] h-[90px] border-[0.5px] border-solid border-[#3f4551] rounded-full bg-[#070d1b] flex items-center justify-center overflow-hidden mb-[28px] transition-all duration-300">
-                <i class="fas fa-cogs text-white text-4xl transition-all duration-300"></i>
-              </div>
-            </div>
-            <h2 class="text-[#fdfeff] mb-[10px] text-[22px] transition-all duration-300">
-              Custom Web Solutions
-            </h2>
-            <p class="text-[#a9adb8] text-[16px]">
-              Crafting tailored web applications to meet business-specific
-              needs with innovative features.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="skills" class="relative py-30">
-      <div class="absolute top-0 left-0 w-full flex justify-center items-start h-full overflow-hidden z-0 opacity-4">
-        <h1 class="text-[5rem] font-bold text-[white] whitespace-nowrap mt-15">
-          MY SKILLS
-        </h1>
-      </div>
-      <div class="max-w-6xl mx-auto z-10 px-4 sm:px-6 lg:px-0">
-        <div class="flex flex-col md:flex-row items-center gap-12">
-          <!-- Section Title -->
-          <div class="w-full flex justify-center md:justify-center mb-16 -mt-8">
-            <div class="text-center">
-              <h2 class="text-2xl font-bold text-[#F9CA6F] uppercase mb-2 relative">
-                MY SKILLS
-              </h2>
-              <div class="relative w-48 h-0.5 bg-gray-800">
-                <div class="absolute left-1/4 right-1/4 top-0 h-full bg-[#F9CA6F]"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Skills Content -->
-        <div class="flex flex-col lg:flex-row items-start justify-between gap-12 relative">
-          <!-- Left Column - Text Content -->
-          <div class="w-full lg:w-1/2 mb-12 lg:mb-0">
-            <h2 class="text-4xl md:text-4xl text-white mb-8 leading-tight">
-              Expertise Across Development & Performance Optimization.
-            </h2>
-
-            <p class="text-gray-400 mb-6">
-              With a strong technical foundation, I specialize in crafting
-              scalable and high-performing web applications. My expertise
-              spans across backend development, frontend responsiveness, and
-              seamless integrations to deliver efficient, user-centric
-              solutions.
-            </p>
-
-            <p class="text-gray-400">
-              Driven by innovation, I continuously refine my skills to
-              optimize performance and enhance user experiences. From
-              structured backend architectures to dynamic UI components, I
-              ensure every project meets modern web standards with precision
-              and creativity.
-            </p>
-          </div>
-
-          <!-- Right Column - Skills Bars -->
-          <div class="w-full lg:w-1/2">
-            <!-- Skill Bar 1 -->
-            <div class="mb-6">
-              <div class="flex justify-between mb-2">
-                <span class="text-white">Laravel Development</span>
-                <span class="text-[#F9CA6F]">95%</span>
-              </div>
-              <div class="w-full bg-[#151C2D] h-2 rounded-full">
-                <div class="bg-[#F9CA6F] h-2 rounded-full" style="width: 95%"></div>
-              </div>
-            </div>
-
-            <!-- Skill Bar 2 -->
-            <div class="mb-6">
-              <div class="flex justify-between mb-2">
-                <span class="text-white">Database Management (MySQL)</span>
-                <span class="text-[#F9CA6F]">90%</span>
-              </div>
-              <div class="w-full bg-[#151C2D] h-2 rounded-full">
-                <div class="bg-[#F9CA6F] h-2 rounded-full" style="width: 90%"></div>
-              </div>
-            </div>
-
-            <!-- Skill Bar 3 -->
-            <div class="mb-6">
-              <div class="flex justify-between mb-2">
-                <span class="text-white">Frontend Development (Tailwind CSS, Bootstrap)</span>
-                <span class="text-[#F9CA6F]">90%</span>
-              </div>
-              <div class="w-full bg-[#151C2D] h-2 rounded-full">
-                <div class="bg-[#F9CA6F] h-2 rounded-full" style="width: 90%"></div>
-              </div>
-            </div>
-
-            <!-- Skill Bar 4 -->
-            <div class="mb-6">
-              <div class="flex justify-between mb-2">
-                <span class="text-white">JavaScript & jQuery</span>
-                <span class="text-[#F9CA6F]">85%</span>
-              </div>
-              <div class="w-full bg-[#151C2D] h-2 rounded-full">
-                <div class="bg-[#F9CA6F] h-2 rounded-full" style="width: 85%"></div>
-              </div>
-            </div>
-
-            <!-- Skill Bar 5 -->
-            <div class="mb-6">
-              <div class="flex justify-between mb-2">
-                <span class="text-white">API Development & Integration</span>
-                <span class="text-[#F9CA6F]">88%</span>
-              </div>
-              <div class="w-full bg-[#151C2D] h-2 rounded-full">
-                <div class="bg-[#F9CA6F] h-2 rounded-full" style="width: 88%"></div>
-              </div>
-            </div>
-
-            <!-- Skill Bar 6 -->
-            <div class="mb-6">
-              <div class="flex justify-between mb-2">
-                <span class="text-white">Performance Optimization</span>
-                <span class="text-[#F9CA6F]">70%</span>
-              </div>
-              <div class="w-full bg-[#151C2D] h-2 rounded-full">
-                <div class="bg-[#F9CA6F] h-2 rounded-full" style="width: 70%"></div>
-              </div>
-            </div>
-            <div class="mb-6">
-              <div class="flex justify-between mb-2">
-                <span class="text-white">Version Control (Git, GitHub) </span>
-                <span class="text-[#F9CA6F]">80%</span>
-              </div>
-              <div class="w-full bg-[#151C2D] h-2 rounded-full">
-                <div class="bg-[#F9CA6F] h-2 rounded-full" style="width: 80%"></div>
-              </div>
-            </div>
-            <div class="mb-6">
-              <div class="flex justify-between mb-2">
-                <span class="text-white">Server Management & Deployment (AWS, Hostinger)</span>
-                <span class="text-[#F9CA6F]">80%</span>
-              </div>
-              <div class="w-full bg-[#151C2D] h-2 rounded-full">
-                <div class="bg-[#F9CA6F] h-2 rounded-full" style="width: 80%"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="resume" class="relative py-30">
-      <!-- Background Text -->
-      <div class="absolute top-0 left-0 w-full flex justify-center items-start h-full overflow-hidden z-0 opacity-4">
-        <h1 class="text-[5rem] font-bold text-white whitespace-nowrap mt-15">
-          RESUME
-        </h1>
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="relative py-28 overflow-hidden">
+      <!-- Background Title Overlay -->
+      <div class="absolute top-10 left-0 w-full flex justify-center pointer-events-none select-none opacity-5">
+        <h2 class="text-7xl sm:text-9xl font-black text-white uppercase tracking-widest">CONTACT</h2>
       </div>
 
-      <!-- Content Container -->
-      <div class="max-w-6xl mx-auto z-10 px-4 sm:px-6 lg:px-0">
-        <!-- Section Title -->
-        <div class="flex flex-col items-center mb-10">
-          <!-- Section Title -->
-          <div class="w-full flex justify-center mb-16 -mt-8">
-            <div class="text-center">
-              <h2 class="text-2xl font-bold text-[#F9CA6F] uppercase mb-2 relative">
-                RESUME
-              </h2>
-              <div class="relative w-48 h-0.5 bg-gray-800">
-                <div class="absolute left-1/4 right-1/4 top-0 h-full bg-[#F9CA6F]"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Experience & Education Section -->
-        <div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-12 relative">
-          <!-- Experience Section -->
-          <div>
-            <div class="flex items-center mb-13">
-              <div class="w-8 h-8 mr-5">
-                <!-- Briefcase icon -->
-                <i class="fas fa-briefcase text-white text-3xl"></i>
-              </div>
-              <h3 class="text-4xl font-medium text-white">Experience</h3>
-            </div>
-
-            <!-- Timeline -->
-            <ol class="relative border-s border-gray-600 ms-2">
-              <!-- Experience Item 1 -->
-              <li class="mb-10 ms-11 group">
-                <div
-                  class="absolute w-[13px] h-[13px] bg-[#101624] rounded-full -start-[7px] border-[2px] border-solid border-[#232935] transition-all duration-300 group-hover:bg-[#F9CA6F]">
-                </div>
-                <h3 class="text-2xl font-semibold text-[#F9CA6F] mb-2 relative -top-2">
-                  Full Stack Developer
-                </h3>
-                <time class="mb-1 text-lg font-normal leading-none text-gray-400">May 2024 - Present</time>
-                <h4 class="text-xl mb-3 mt-3 font-semibold text-gray-300">
-                  Shuru-up, Ahmedabad
-                </h4>
-                <p class="text-base font-normal text-gray-400">
-                  Building scalable full-stack applications, optimizing databases, and integrating APIs with clean,
-                  efficient code.
-                </p>
-              </li>
-
-              <li class="mb-10 ms-11 group">
-                <div
-                  class="absolute w-[13px] h-[13px] bg-[#101624] rounded-full -start-[7px] border-[2px] border-solid border-[#232935] transition-all duration-300 group-hover:bg-[#F9CA6F]">
-                </div>
-                <h3 class="text-2xl font-semibold text-[#F9CA6F] mb-2 relative -top-2">
-                  Junior Laravel Developer
-                </h3>
-                <time class="mb-1 text-lg font-normal leading-none text-gray-400">Jan 2024 - April 2024</time>
-                <h4 class="text-xl mb-3 mt-3 font-semibold text-gray-300">
-                  Shuru-up, Ahmedabad
-                </h4>
-                <p class="text-base font-normal text-gray-400">
-                  Gained experience in software development, collaborating on
-                  backend solutions, optimizing databases, and integrating
-                  APIs for performance.
-                </p>
-              </li>
-              <li class="mb-10 ms-11 group">
-                <div
-                  class="absolute w-[13px] h-[13px] bg-[#101624] rounded-full -start-[7px] border-[2px] border-solid border-[#232935] transition-all duration-300 group-hover:bg-[#F9CA6F]">
-                </div>
-                <h3 class="text-2xl font-semibold text-[#F9CA6F] mb-2 relative -top-2">
-                  Freelancer
-                </h3>
-                <time class="mb-1 text-lg font-normal leading-none text-gray-400">Jan 2023 - Present</time>
-                <h4 class="text-xl mb-3 mt-3 font-semibold text-gray-300">
-                  Gujarat, Ahmedabad
-                </h4>
-                <p class="text-base font-normal text-gray-400">
-                  Providing full-stack development, building scalable web
-                  applications, optimizing databases, and integrating APIs for
-                  client projects.
-                </p>
-              </li>
-            </ol>
-          </div>
-
-          <!-- Education Section -->
-          <div>
-            <div class="flex items-center mb-13">
-              <div class="w-8 h-8 mr-5">
-                <!-- Graduation cap icon -->
-                <i class="fas fa-graduation-cap text-white text-3xl"></i>
-              </div>
-              <h3 class="text-4xl font-medium text-white">Education</h3>
-            </div>
-
-            <!-- Timeline -->
-            <ol class="relative border-s border-gray-600 ms-2">
-              <!-- Education Item 1 -->
-              <li class="mb-10 ms-11 group">
-                <div
-                  class="absolute w-[13px] h-[13px] bg-[#101624] rounded-full -start-[7px] border-[2px] border-solid border-[#232935] transition-all duration-300 group-hover:bg-[#F9CA6F]">
-                </div>
-                <h3 class="text-2xl font-semibold text-[#F9CA6F] mb-2 relative -top-2">
-                  Master of Computer Applications (MCA)
-                </h3>
-                <time class="mb-1 text-lg font-normal leading-none text-gray-400">June 2024 – Present</time>
-                <h4 class="text-xl mb-3 mt-3 font-semibold text-gray-300">
-                  LJ University, Ahmedabad
-                </h4>
-                <p class="text-base font-normal text-gray-400">
-                  Advancing in software engineering, system architecture, and
-                  emerging technologies.
-                </p>
-              </li>
-
-              <li class="mb-10 ms-11 group">
-                <div
-                  class="absolute w-[13px] h-[13px] bg-[#101624] rounded-full -start-[7px] border-[2px] border-solid border-[#232935] transition-all duration-300 group-hover:bg-[#F9CA6F]">
-                </div>
-                <h3 class="text-2xl font-semibold text-[#F9CA6F] mb-2 relative -top-2">
-                  Bachelor of Computer Applications (BCA)
-                </h3>
-                <time class="mb-1 text-lg font-normal leading-none text-gray-400">2021 – 2024</time>
-                <h4 class="text-xl mb-3 mt-3 font-semibold text-gray-300">
-                  LJ University, Ahmedabad
-                </h4>
-                <p class="text-base font-normal text-gray-400">
-                  Skilled in programming, software development, and databases
-                  with a focus on web apps.
-                </p>
-              </li>
-
-              <li class="mb-10 ms-11 group">
-                <div
-                  class="absolute w-[13px] h-[13px] bg-[#101624] rounded-full -start-[7px] border-[2px] border-solid border-[#232935] transition-all duration-300 group-hover:bg-[#F9CA6F]">
-                </div>
-                <h3 class="text-2xl font-semibold text-[#F9CA6F] mb-2 relative -top-2">
-                  Higher Secondary Education
-                </h3>
-                <time class="mb-1 text-lg font-normal leading-none text-gray-400">2019 – 2021</time>
-                <h4 class="text-xl mb-3 mt-3 font-semibold text-gray-300">
-                  Nelsons High School, Ahmedabad
-                </h4>
-                <p class="text-base font-normal text-gray-400">
-                  Strong foundation in math and computer science, preparing
-                  for tech studies.
-                </p>
-              </li>
-            </ol>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="portfolio" class="relative py-30" x-data="{ open: false }">
-      <!-- Background Text -->
-      <div class="absolute top-0 left-0 w-full flex justify-center items-start h-full overflow-hidden z-0 opacity-4">
-        <h1 class="text-[5rem] font-bold text-white whitespace-nowrap mt-15">
-          PORTFOLIO
-        </h1>
-      </div>
-
-      <!-- Content Container -->
-      <div class="max-w-6xl mx-auto px-6 z-10">
-        <!-- Section Title -->
-        <div class="flex flex-col md:flex-row items-center gap-12">
-          <!-- Section Title -->
-          <div class="w-full flex justify-center md:justify-center mb-16 -mt-8">
-            <div class="text-center">
-              <h2 class="text-2xl font-bold text-[#F9CA6F] uppercase mb-2 relative">
-                PORTFOLIOS
-              </h2>
-              <div class="relative w-48 h-0.5 bg-gray-800">
-                <div class="absolute left-1/4 right-1/4 top-0 h-full bg-[#F9CA6F]"></div>
-              </div>
-            </div>
-          </div>
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <!-- Section Header -->
+        <div class="text-center mb-16">
+          <h2 class="text-sm uppercase font-bold text-[#F9CA6F] tracking-widest mb-2">Get In Touch</h2>
+          <h3 class="text-3xl sm:text-4xl font-extrabold text-white">Contact Me</h3>
+          <div class="w-24 h-1 bg-gradient-to-r from-[#F9CA6F] to-[#38bdf8] mx-auto mt-4 rounded-full"></div>
         </div>
 
-        <!-- Portfolio Items -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <!-- Portfolio Item 1 -->
-          <div class="relative overflow-hidden bg-gray-100 rounded h-64 cursor-pointer" x-data="{ show: false }"
-            @mouseenter="show = true" @mouseleave="show = false" @click="show = true">
-            <img src="image/stock-market.jpg" alt="Stock Market Site"
-              class="w-full h-full object-cover transition-transform duration-500 ease-in-out transform"
-              :class="{ 'scale-110': show }" />
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+          <!-- Left Side - Formspree Contact Form -->
+          <div class="lg:col-span-7 glass-panel rounded-3xl p-8 border border-white/10">
+            <h3 class="text-2xl font-bold text-white mb-2">Send Me A Message</h3>
+            <p class="text-gray-400 text-sm mb-6">Have a project idea or job opportunity? Send me a message and it will land directly in my inbox!</p>
 
-            <!-- Overlay -->
-            <div
-              class="absolute inset-0 bg-[#0a0f1f]/80 flex flex-col justify-center items-center transition-opacity duration-300"
-              :class="{ 'opacity-100': show, 'opacity-0': !show }">
-              <div class="mb-4 flex justify-center items-center">
-                <button class="w-10 h-10 rounded-full bg-[#F9CA6F]" @click.stop="open = true">
-                  <i class="fa fa-plus text-black text-xl font-black"></i>
-                </button>
-              </div>
-              <h3 class="text-white text-xl font-medium">
-                Stock Market Site
-              </h3>
-              <p class="text-gray-300 text-sm">PHP Laravel</p>
-            </div>
-          </div>
-
-          <!-- <div
-              class="relative overflow-hidden bg-gray-100 rounded group h-64"
-            >
-              <img
-                src="image/Stock-market.png"
-                alt="Building Book Design"
-                class="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
-              />
-              <div
-                class="absolute inset-0 bg-[#0a0f1f]/80 flex flex-col justify-center items-center opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-              >
-                <div class="relative mb-4 flex justify-center items-center">
-                  <button
-                    class="w-10 h-10 rounded-full bg-[#F9CA6F]"
-                    @click="open = true"
-                  >
-                    <i class="fa fa-plus text-black text-xl font-black"></i>
-                  </button>
-                  
-                </div>
-                <h3 class="text-white text-xl font-medium">
-                  Stock Market Site
-                </h3>
-                <p class="text-gray-300 text-sm">PHP Laravel</p>
-              </div>
-            </div> -->
-          <!-- <div
-              class="relative overflow-hidden bg-gray-100 rounded group h-64"
-            >
-              <img
-                src="image/Stock-market.png"
-                alt="Building Book Design"
-                class="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
-              />
-              <div
-                class="absolute inset-0 bg-[#0a0f1f]/80 flex flex-col justify-center items-center opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-              >
-                <div class="relative mb-4 flex justify-center items-center">
-                  <button
-                    class="w-10 h-10 rounded-full bg-[#F9CA6F]"
-                    @click="open = true"
-                  >
-                    <i class="fa fa-plus text-black text-xl font-black"></i>
-                  </button>
-                  
-                </div>
-                <h3 class="text-white text-xl font-medium">
-                  Stock Market Site
-                </h3>
-                <p class="text-gray-300 text-sm">PHP Laravel</p>
-              </div>
-            </div> -->
-        </div>
-        <!-- Modal -->
-        <div x-show="open" x-cloak x-transition.opacity
-          class="fixed inset-0 z-50 flex justify-center items-center bg-[#0a0f1f]/90" style="z-index: 1100"
-          @click="open = false">
-          <!-- Close Button -->
-          <button @click="open = false"
-            class="absolute top-8 right-8 text-white text-4xl hover:text-[#F9CA6F] transition-all duration-300 z-10 w-12 h-12 flex items-center justify-center rounded-full bg-black/50 hover:bg-[#F9CA6F]/20">
-            <i class="fas fa-times"></i>
-          </button>
-
-          <!-- Image -->
-          <div class="flex justify-center items-center w-full h-full" @click.stop>
-            <img src="image/Cover.png" alt="Building Book Design"
-              class="w-[70%] h-[70%] object-contain rounded-lg shadow-lg" />
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- <section id="reviews" class="relative py-30">
-      <div class="absolute top-0 left-0 w-full flex justify-center items-start h-full overflow-hidden z-0 opacity-4">
-        <h1 class="text-[5rem] font-bold text-white whitespace-nowrap mt-15">
-          REVIEWS
-        </h1>
-      </div>
-
-      <div class="max-w-6xl mx-auto px-6 z-10">
-        <div class="flex flex-col md:flex-row items-center gap-12">
-          <div class="w-full flex justify-center md:justify-center mb-16 -mt-8">
-            <div class="text-center">
-              <h2 class="text-2xl font-bold text-[#F9CA6F] uppercase mb-2">
-                REVIEWS
-              </h2>
-              <div class="relative w-48 h-0.5 bg-gray-800">
-                <div class="absolute left-1/4 right-1/4 top-0 h-full bg-[#F9CA6F]"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="st-slider st-style1 st-reviews-wrap">
-          <div class="slick-container">
-            <div class="testimonial-slider">
-              <div class="testimonial-item group mx-2">
-                <div
-                  class="bg-[#101624] border border-[#232935] rounded p-8 relative mb-10 group-hover:border-[#fec544] transition-all duration-300">
-                  <p class="text-center text-gray-300">
-                    "As a UI/UX designer, I’ve collaborated with many
-                    developers, but Mohit stands out for effortlessly
-                    transforming designs into seamless, functional, and
-                    interactive experiences."
-                  </p>
-                  <div
-                    class="absolute w-6 h-6 transform rotate-45 left-1/2 -ml-3 -bottom-3 border-b border-r border-[#232935] bg-[#101624] group-hover:border-[#fec544] transition-all duration-300">
-                  </div>
-                </div>
-                <div class="flex flex-col items-center">
-                  <div class="w-20 h-20 rounded-full overflow-hidden mb-4">
-                    <img src="image/payal.jpg" alt="Richard Miles" class="w-full h-full object-cover" />
-                  </div>
-                  <h4 class="text-lg font-medium text-white group-hover:text-[#fec544] transition-all duration-300">
-                    Payal Raghuvashi
-                  </h4>
-                  <p class="text-sm text-gray-400">UI/UX Designer</p>
-                </div>
-              </div>
-
-              <div class="testimonial-item group mx-2">
-                <div
-                  class="bg-[#101624] border border-[#232935] rounded p-8 relative mb-10 group-hover:border-[#fec544] transition-all duration-300">
-                  <p class="text-center text-gray-300">
-                    "As a Flutter developer, I’ve worked with many backend
-                    engineers, but Mohit truly excels at building seamless,
-                    efficient, and scalable APIs for flawless, reliable
-                    integration."
-                  </p>
-
-                  <div
-                    class="absolute w-6 h-6 transform rotate-45 left-1/2 -ml-3 -bottom-3 border-b border-r border-[#232935] bg-[#101624] group-hover:border-[#fec544] transition-all duration-300">
-                  </div>
-                </div>
-                <div class="flex flex-col items-center">
-                  <div class="w-20 h-20 rounded-full overflow-hidden mb-4">
-                    <img src="image/yash.png" alt="Vesta Shufelt" class="w-full h-full object-cover" />
-                  </div>
-                  <h4 class="text-lg font-medium text-white group-hover:text-[#fec544] transition-all duration-300">
-                    Yash Savaj
-                  </h4>
-                  <p class="text-sm text-gray-400">Flutter Developer</p>
-                </div>
-              </div>
-
-              <div class="testimonial-item group mx-2">
-                <div
-                  class="bg-[#101624] border border-[#232935] rounded p-8 relative mb-10 group-hover:border-[#fec544] transition-all duration-300">
-                  <p class="text-center text-gray-300">
-                    "As a Laravel developer, I’ve worked with many talented
-                    professionals, but Mohit truly excels at building
-                    scalable, high-performance applications with robust, clean
-                    architecture"
-                  </p>
-
-                  <div
-                    class="absolute w-6 h-6 transform rotate-45 left-1/2 -ml-3 -bottom-3 border-b border-r border-[#232935] bg-[#101624] group-hover:border-[#fec544] transition-all duration-300">
-                  </div>
-                </div>
-                <div class="flex flex-col items-center">
-                  <div class="w-20 h-20 rounded-full overflow-hidden mb-4">
-                    <img src="image/abhishek.jpg" alt="Joseph Alves" class="w-full h-full object-cover" />
-                  </div>
-                  <h4 class="text-lg font-medium text-white group-hover:text-[#fec544] transition-all duration-300">
-                    Abhishek Jetani
-                  </h4>
-                  <p class="text-sm text-gray-400">Laravel Developer</p>
-                </div>
-              </div>
-
-              <div class="testimonial-item group mx-2">
-                <div
-                  class="bg-[#101624] border border-[#232935] rounded p-8 relative mb-10 group-hover:border-[#fec544] transition-all duration-300">
-                  <p class="text-center text-gray-300">
-                    "As a UI/UX designer, I’ve teamed up with many developers,
-                    but Mohit consistently impresses by quickly bringing
-                    designs to life with intuitive, reliable, and truly
-                    dynamic results every time."
-                  </p>
-
-                  <div
-                    class="absolute w-6 h-6 transform rotate-45 left-1/2 -ml-3 -bottom-3 border-b border-r border-[#232935] bg-[#101624] group-hover:border-[#fec544] transition-all duration-300">
-                  </div>
-                </div>
-                <div class="flex flex-col items-center">
-                  <div class="w-20 h-20 rounded-full overflow-hidden mb-4">
-                    <img src="image/krishna.png" alt="Krishna Patel" class="w-full h-full object-cover" />
-                  </div>
-                  <h4 class="text-lg font-medium text-white group-hover:text-[#fec544] transition-all duration-300">
-                    Krishna Patel
-                  </h4>
-                  <p class="text-sm text-gray-400">UI/UX Designer</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section> -->
-
-    <section id="contact" class="relative py-30">
-      <!-- Background Text -->
-      <div class="absolute top-0 left-0 w-full flex justify-center items-start h-full overflow-hidden z-0 opacity-4">
-        <h1 class="text-[5rem] font-bold text-white whitespace-nowrap mt-15">
-          CONTACT
-        </h1>
-      </div>
-
-      <div class="max-w-6xl mx-auto px-6 z-10">
-        <!-- Section Title -->
-        <div class="flex flex-col md:flex-row items-center gap-12">
-          <!-- Section Title -->
-          <div class="w-full flex justify-center md:justify-center mb-16 -mt-8">
-            <div class="text-center">
-              <h2 class="text-2xl font-bold text-[#F9CA6F] uppercase mb-2 relative">
-                CONTACT ME
-              </h2>
-              <div class="relative w-48 h-0.5 bg-gray-800">
-                <div class="absolute left-1/4 right-1/4 top-0 h-full bg-[#F9CA6F]"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="flex flex-col lg:flex-row gap-16 relative">
-          <!-- Left Side - Contact Form -->
-          <div class="w-full mt-12 lg:mt-0">
-            <h3 class="text-2xl md:text-[30px] font-semibold mt-[-6px] mb-5 text-white">
-              Just say Hello
-            </h3>
-
-            <form action="https://formspree.io/f/mblwjpav" method="POST" name="contact">
-              <input type="hidden" name="_subject" value="New Contact Form Submission from Portfolio" />
+            <form action="https://formspree.io/f/mblwjpav" method="POST" name="contact" class="space-y-5">
+              <input type="hidden" name="_subject" value="New Portfolio Message from MohitJanwani.in" />
               <input type="hidden" name="_cc" value="mohitjanwani2110@gmail.com" />
               <input type="hidden" name="_replyto" id="replyto" />
 
-              <div class="mb-6">
-                <input type="text" name="name" placeholder="Your Name" required
-                  class="text-[#a9adb8] w-full h-[52px] py-[12px] px-[20px] bg-[#101624] border border-solid border-[#232935] rounded-[7px] focus:outline-none focus:border-[#F9CA6F] transition" />
+              <div>
+                <label class="block text-xs font-semibold text-gray-300 uppercase mb-2">Your Name</label>
+                <input type="text" name="name" placeholder="Your Full Name" required class="w-full bg-white/5 border border-white/10 rounded-xl py-3 px-4 text-white placeholder-gray-500 focus:outline-none focus:border-[#F9CA6F] focus:ring-1 focus:ring-[#F9CA6F] transition" />
               </div>
 
-              <div class="mb-6">
-                <input type="email" name="email" placeholder="Your Email" required
-                  class="text-[#a9adb8] w-full h-[52px] py-[12px] px-[20px] bg-[#101624] border border-solid border-[#232935] rounded-[7px] focus:outline-none focus:border-[#F9CA6F] transition" />
+              <div>
+                <label class="block text-xs font-semibold text-gray-300 uppercase mb-2">Your Email Address</label>
+                <input type="email" name="email" id="contact-email" placeholder="name@example.com" required class="w-full bg-white/5 border border-white/10 rounded-xl py-3 px-4 text-white placeholder-gray-500 focus:outline-none focus:border-[#F9CA6F] focus:ring-1 focus:ring-[#F9CA6F] transition" />
               </div>
 
-              <div class="mb-6">
-                <input type="text" name="subject" placeholder="Your Subject" required
-                  class="text-[#a9adb8] w-full h-[52px] py-[12px] px-[20px] bg-[#101624] border border-solid border-[#232935] rounded-[7px] focus:outline-none focus:border-[#F9CA6F] transition" />
+              <div>
+                <label class="block text-xs font-semibold text-gray-300 uppercase mb-2">Subject</label>
+                <input type="text" name="subject" placeholder="Project Opportunity / Hire Inquiry" required class="w-full bg-white/5 border border-white/10 rounded-xl py-3 px-4 text-white placeholder-gray-500 focus:outline-none focus:border-[#F9CA6F] focus:ring-1 focus:ring-[#F9CA6F] transition" />
               </div>
 
-              <div class="mb-6">
-                <textarea name="message" placeholder="Your Message" rows="5" required
-                  class="text-[#a9adb8] w-full py-[12px] px-[20px] bg-[#101624] border border-solid border-[#232935] rounded-[7px] focus:outline-none focus:border-[#F9CA6F] transition"></textarea>
+              <div>
+                <label class="block text-xs font-semibold text-gray-300 uppercase mb-2">Message</label>
+                <textarea name="message" rows="5" placeholder="Hi Mohit, I would like to discuss..." required class="w-full bg-white/5 border border-white/10 rounded-xl py-3 px-4 text-white placeholder-gray-500 focus:outline-none focus:border-[#F9CA6F] focus:ring-1 focus:ring-[#F9CA6F] transition"></textarea>
               </div>
 
-              <button type="submit"
-                class="px-8 py-3 bg-[#F9CA6F] text-black font-semibold rounded-full hover:bg-opacity-90 transition disabled:opacity-70 disabled:cursor-not-allowed">
-                Send Message
+              <button type="submit" class="w-full py-4 rounded-xl text-sm font-bold bg-gradient-to-r from-[#F9CA6F] to-[#F59E0B] text-[#070b14] hover:shadow-[0_0_30px_rgba(249,202,111,0.4)] transition-all transform hover:-translate-y-0.5">
+                Send Message To My Email <i class="fas fa-paper-plane ml-2"></i>
               </button>
             </form>
           </div>
 
-          <!-- Right Side - Contact Info -->
-          <div class="w-full mt-12 md:mt-0">
-            <h3 class="text-[30px] font-semibold mt-[-6px] mb-[22px] text-white">
-              Contact Info
-            </h3>
+          <!-- Right Side - Contact Information Cards -->
+          <div class="lg:col-span-5 flex flex-col justify-between space-y-6">
+            <div class="glass-panel rounded-3xl p-8 border border-white/10 space-y-6">
+              <h3 class="text-2xl font-bold text-white mb-2">Direct Contact</h3>
+              <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                Feel free to connect directly via email or phone. I usually respond within a few hours!
+              </p>
 
-            <p class="text-gray-400 mb-[23px] mt-[-6px]">
-              I’m always open to new opportunities, collaborations, or just a
-              friendly chat! Feel free to reach out via email or phone, and
-              I’ll get back to you as soon as possible.
-            </p>
-
-            <div class="space-y-5">
-              <!-- Email -->
-              <div class="flex items-start">
-                <div
-                  class="flex-shrink-0 w-[50px] h-[50px] rounded-full flex items-center justify-center mr-[20px] bg-[#070d1b] border-[0.5px] border-solid border-[#3f4551]">
-                  <i class="fas fa-envelope text-[#3f4551]"></i>
+              <!-- Info Item 1 -->
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 rounded-2xl bg-[#F9CA6F]/10 text-[#F9CA6F] flex items-center justify-center text-xl flex-shrink-0">
+                  <i class="fas fa-envelope"></i>
                 </div>
                 <div>
-                  <h4 class="text-xl font-semibold mb-1 text-white">Email</h4>
-                  <p class="text-gray-400">mohitjanwani2110@gmail.com</p>
-                  <!-- <p class="text-gray-400">info@support.com</p> -->
+                  <h4 class="text-sm font-bold text-white uppercase tracking-wider">Email Inbox</h4>
+                  <a href="mailto:mohitjanwani2110@gmail.com" class="text-gray-300 text-sm hover:text-[#F9CA6F] transition-colors break-all">mohitjanwani2110@gmail.com</a>
                 </div>
               </div>
 
-              <!-- Phone -->
-              <div class="flex items-start">
-                <div
-                  class="flex-shrink-0 w-[50px] h-[50px] rounded-full flex items-center justify-center mr-[20px] bg-[#070d1b] border-[0.5px] border-solid border-[#3f4551]">
-                  <i class="fas fa-phone-alt text-[#3f4551]"></i>
+              <!-- Info Item 2 -->
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 rounded-2xl bg-[#38bdf8]/10 text-[#38bdf8] flex items-center justify-center text-xl flex-shrink-0">
+                  <i class="fas fa-phone-alt"></i>
                 </div>
                 <div>
-                  <h4 class="text-xl font-semibold mb-1 text-white">Phone</h4>
-                  <p class="text-gray-400">+91 8799051416</p>
-                  <!-- <p class="text-gray-400">+1 213-519-1786</p> -->
+                  <h4 class="text-sm font-bold text-white uppercase tracking-wider">Phone / WhatsApp</h4>
+                  <a href="tel:+918799051416" class="text-gray-300 text-sm hover:text-[#38bdf8] transition-colors">+91 8799051416</a>
                 </div>
               </div>
 
-              <!-- Address -->
-              <div class="flex items-start mb-[30px]">
-                <div
-                  class="flex-shrink-0 w-[50px] h-[50px] rounded-full flex items-center justify-center mr-[20px] bg-[#070d1b] border-[0.5px] border-solid border-[#3f4551]">
-                  <i class="fas fa-map-marker-alt text-[#3f4551]"></i>
+              <!-- Info Item 3 -->
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 rounded-2xl bg-[#F9CA6F]/10 text-[#F9CA6F] flex items-center justify-center text-xl flex-shrink-0">
+                  <i class="fas fa-map-marker-alt"></i>
                 </div>
                 <div>
-                  <h4 class="text-xl font-semibold mb-1 text-white">
-                    Address
-                  </h4>
-                  <p class="text-gray-400">
-                    9/7 Sandeepani Society , Samrat Nagar , Isanpur ,
-                    Ahmedabad
-                  </p>
-                  <p class="text-gray-400">Pincode - 382443</p>
+                  <h4 class="text-sm font-bold text-white uppercase tracking-wider">Location</h4>
+                  <p class="text-gray-300 text-sm">Ahmedabad, Gujarat, India - 382443</p>
                 </div>
               </div>
             </div>
 
-            <!-- Social Links -->
-            <div>
-              <h4 class="text-[20px] mb-[25px] pt-[5px] font-bold text-gray-400">
-                Visite my social profile and get connected
-              </h4>
-              <div class="flex gap-4" id="socialContainer">
-                <!-- Dribbble -->
-                <a href="https://github.com/mohitjanwani" target="_blank"
-                  class="group relative w-12 h-12 rounded-full border border-gray-700 flex items-center justify-center transition-all duration-400 overflow-hidden social-icon">
-                  <i class="fab fa-github text-xl text-white group-hover:mr-2 transition-all duration-400"></i>
-                  <span
-                    class="absolute opacity-0 group-hover:opacity-100 transition-opacity duration-400 font-medium text-white pointer-events-none">GitHub</span>
+            <!-- Social Links Panel -->
+            <div class="glass-panel rounded-3xl p-6 border border-white/10 text-center">
+              <h4 class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">Connect With Me</h4>
+              <div class="flex justify-center items-center gap-4">
+                <a href="https://github.com/mohitjanwani" target="_blank" class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 text-white hover:text-[#F9CA6F] hover:border-[#F9CA6F] flex items-center justify-center text-xl transition-all transform hover:scale-110" aria-label="GitHub">
+                  <i class="fab fa-github"></i>
                 </a>
-
-                <!-- Behance -->
-                <!-- <a
-                    href="#"
-                    class="group relative w-12 h-12 rounded-full border border-gray-700 flex items-center justify-center transition-all duration-400 overflow-hidden social-icon"
-                  >
-                    <i
-                      class="fab fa-behance text-xl text-white group-hover:mr-2 transition-all duration-400"
-                    ></i>
-                    <span
-                      class="absolute opacity-0 group-hover:opacity-100 transition-opacity duration-400 font-medium text-white pointer-events-none"
-                      >Behance</span
-                    >
-                  </a> -->
-
-                <!-- Twitter -->
-                <a href="https://x.com/mohit_janwani" target="_blank"
-                  class="group relative w-12 h-12 rounded-full border border-gray-700 flex items-center justify-center transition-all duration-400 overflow-hidden social-icon">
-                  <i class="fab fa-twitter text-xl text-white group-hover:mr-2 transition-all duration-400"></i>
-                  <span
-                    class="absolute opacity-0 group-hover:opacity-100 transition-opacity duration-400 font-medium text-white pointer-events-none">Twitter</span>
+                <a href="https://www.linkedin.com/in/mohitjanwani/" target="_blank" class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 text-white hover:text-[#38bdf8] hover:border-[#38bdf8] flex items-center justify-center text-xl transition-all transform hover:scale-110" aria-label="LinkedIn">
+                  <i class="fab fa-linkedin-in"></i>
                 </a>
-
-                <!-- LinkedIn -->
-                <a href="https://www.linkedin.com/in/mohitjanwani/" target="_blank"
-                  class="group relative w-12 h-12 rounded-full border border-gray-700 flex items-center justify-center transition-all duration-400 overflow-hidden social-icon">
-                  <i class="fab fa-linkedin-in text-xl text-white group-hover:mr-2 transition-all duration-400"></i>
-                  <span
-                    class="absolute opacity-0 group-hover:opacity-100 transition-opacity duration-400 font-medium text-white pointer-events-none">LinkedIn</span>
+                <a href="https://x.com/mohit_janwani" target="_blank" class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 text-white hover:text-[#F9CA6F] hover:border-[#F9CA6F] flex items-center justify-center text-xl transition-all transform hover:scale-110" aria-label="Twitter">
+                  <i class="fab fa-x-twitter"></i>
                 </a>
               </div>
             </div>
@@ -1238,260 +1032,231 @@
         </div>
       </div>
     </section>
-    <footer class="bg-[#070d1b] py-4">
-      <div class="container mx-auto flex items-center justify-center h-[50px]">
-        <p class="text-[#a9adb8] text-[16px]">
-          © 2025. Designed by Mohit. All rights reserved.
+
+    <!-- FOOTER -->
+    <footer class="border-t border-white/10 bg-[#04070d] py-8 text-center relative z-10">
+      <div class="max-w-6xl mx-auto px-4">
+        <p class="text-gray-400 text-sm">
+          © 2025 <span class="text-[#F9CA6F] font-semibold">Mohit Janwani</span>. Crafted with precision & passion. All rights reserved.
         </p>
       </div>
     </footer>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const icons = document.querySelectorAll(".social-icon");
-        let activeIcon = null;
 
-        icons.forEach((icon) => {
-          icon.addEventListener("mouseenter", function () {
-            // Reset previously active icon
-            if (activeIcon && activeIcon !== this) {
-              activeIcon.style.paddingRight = "";
-              activeIcon.style.borderColor = "";
-              activeIcon.style.justifyContent = "center";
-              activeIcon.style.paddingLeft = "";
-              activeIcon.querySelector("i").style.transform = "";
-              activeIcon.querySelector("span").style.opacity = "";
-              activeIcon.querySelector("span").style.transform = "";
+  </div>
+
+  <!-- SCRIPT FOR PARTICLES & INTERACTION -->
+  <script>
+    // 1. High Performance HTML5 Canvas Particles System
+    (function () {
+      const canvas = document.getElementById("particles-canvas");
+      if (!canvas) return;
+      const ctx = canvas.getContext("2d");
+      let particles = [];
+      let width, height;
+
+      function resize() {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      }
+
+      window.addEventListener("resize", resize);
+      resize();
+
+      const mouse = { x: null, y: null, radius: 140 };
+      window.addEventListener("mousemove", (e) => {
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+      });
+      window.addEventListener("mouseleave", () => {
+        mouse.x = null;
+        mouse.y = null;
+      });
+
+      class Particle {
+        constructor() {
+          this.x = Math.random() * width;
+          this.y = Math.random() * height;
+          this.vx = (Math.random() - 0.5) * 0.6;
+          this.vy = (Math.random() - 0.5) * 0.6;
+          this.radius = Math.random() * 2 + 1;
+          this.color = Math.random() > 0.4 ? "#F9CA6F" : "#38bdf8";
+          this.alpha = Math.random() * 0.5 + 0.2;
+        }
+
+        update() {
+          this.x += this.vx;
+          this.y += this.vy;
+
+          if (this.x < 0) this.x = width;
+          if (this.x > width) this.x = 0;
+          if (this.y < 0) this.y = height;
+          if (this.y > height) this.y = 0;
+
+          // Mouse Interaction
+          if (mouse.x && mouse.y) {
+            const dx = mouse.x - this.x;
+            const dy = mouse.y - this.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < mouse.radius) {
+              const force = (mouse.radius - dist) / mouse.radius;
+              this.x -= (dx / dist) * force * 3;
+              this.y -= (dy / dist) * force * 3;
             }
+          }
+        }
 
-            // Set current icon as active
-            this.style.paddingRight = "6.3rem";
-            this.style.justifyContent = "flex-start";
-            this.style.paddingLeft = "1rem";
+        draw() {
+          ctx.save();
+          ctx.globalAlpha = this.alpha;
+          ctx.fillStyle = this.color;
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.restore();
+        }
+      }
 
-            // Move icon to left side
-            this.querySelector("i").style.transform = "translateX(0)";
+      const particleCount = Math.min(100, Math.floor(window.innerWidth / 15));
+      for (let i = 0; i < particleCount; i++) {
+        particles.push(new Particle());
+      }
 
-            // Position text in the middle of the expanded area
-            const span = this.querySelector("span");
-            span.style.opacity = "1";
-            span.style.transform = "translateX(1.7rem)"; // Position text in middle of expanded area
+      function animate() {
+        ctx.clearRect(0, 0, width, height);
 
-            activeIcon = this;
-          });
+        // Draw connecting lines
+        for (let i = 0; i < particles.length; i++) {
+          for (let j = i + 1; j < particles.length; j++) {
+            const dx = particles[i].x - particles[j].x;
+            const dy = particles[i].y - particles[j].y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < 120) {
+              ctx.save();
+              ctx.globalAlpha = (1 - dist / 120) * 0.15;
+              ctx.strokeStyle = "#F9CA6F";
+              ctx.lineWidth = 0.6;
+              ctx.beginPath();
+              ctx.moveTo(particles[i].x, particles[i].y);
+              ctx.lineTo(particles[j].x, particles[j].y);
+              ctx.stroke();
+              ctx.restore();
+            }
+          }
+        }
+
+        particles.forEach((p) => {
+          p.update();
+          p.draw();
         });
 
-        document
-          .getElementById("socialContainer")
-          .addEventListener("mouseleave", function () {
-            if (activeIcon) {
-              // Uncomment to reset when leaving the container
-              // activeIcon.style.paddingRight = '';
-              // activeIcon.style.borderColor = '';
-              // activeIcon.style.justifyContent = 'center';
-              // activeIcon.style.paddingLeft = '';
-              // activeIcon.querySelector("i").style.transform = "";
-              // activeIcon.querySelector("span").style.opacity = "";
-              // activeIcon.querySelector("span").style.transform = "";
-              // activeIcon = null;
-            }
-          });
-      });
+        requestAnimationFrame(animate);
+      }
 
-      $(".testimonial-slider").slick({
-        dots: true,
-        arrows: false, // ⛔ disable arrows
-        infinite: true,
-        speed: 500,
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        responsive: [
-          {
-            breakpoint: 1024,
-            settings: {
-              slidesToShow: 2,
-            },
-          },
-          {
-            breakpoint: 640,
-            settings: {
-              slidesToShow: 1,
-            },
-          },
-        ],
-      });
+      animate();
+    })();
 
-      document.addEventListener("DOMContentLoaded", function () {
-        // Navbar background on scroll
-        const navbar = document.querySelector(".navbar");
-        const scrollOffset = 100;
+    // 2. Navbar Active ScrollSpy & Smooth Scroll
+    document.addEventListener("DOMContentLoaded", function () {
+      const navbar = document.getElementById("main-navbar");
+      const navLinks = document.querySelectorAll(".nav-link");
+      const sections = document.querySelectorAll("section[id]");
 
-        window.addEventListener("scroll", function () {
-          if (window.scrollY > scrollOffset) {
-            navbar.classList.add("scrolled");
-          } else {
-            navbar.classList.remove("scrolled");
+      window.addEventListener("scroll", function () {
+        if (window.scrollY > 50) {
+          navbar.classList.add("py-2");
+          navbar.classList.remove("py-4");
+        } else {
+          navbar.classList.add("py-4");
+          navbar.classList.remove("py-2");
+        }
+
+        let current = "";
+        sections.forEach((section) => {
+          const sectionTop = section.offsetTop - 120;
+          if (window.pageYOffset >= sectionTop) {
+            current = section.getAttribute("id");
           }
         });
 
-        // Initialize on load
-        if (window.scrollY > scrollOffset) {
-          navbar.classList.add("scrolled");
-        }
-
-        // Active nav link highlighting
-        const sections = document.querySelectorAll("section[id], div[id]");
-        const navLinks = document.querySelectorAll(".nav-link");
-        const mobileNavLinks = document.querySelectorAll(".mobile-nav-link");
-
-        // Set home as active initially
-        setActiveLink("home");
-
-        function setActiveLink(id) {
-          // Update desktop nav
-          navLinks.forEach((link) => {
-            link.classList.remove("active");
-            if (link.dataset.section === id) {
-              link.classList.add("active");
-            }
-          });
-
-          // Update mobile nav
-          mobileNavLinks.forEach((link) => {
-            link.classList.remove("active");
-            if (link.getAttribute("href") === `#${id}`) {
-              link.classList.add("active");
-            }
-          });
-        }
-
-        // Scroll detection
-        window.addEventListener("scroll", function () {
-          let current = "";
-
-          sections.forEach((section) => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-
-            if (pageYOffset >= sectionTop - 300) {
-              current = section.getAttribute("id");
-            }
-          });
-
-          if (current) {
-            setActiveLink(current);
+        navLinks.forEach((link) => {
+          link.classList.remove("active");
+          if (link.dataset.section === current) {
+            link.classList.add("active");
           }
         });
-
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-          anchor.addEventListener("click", function (e) {
-            e.preventDefault();
-
-            const targetId = this.getAttribute("href");
-            if (targetId === "#") return;
-
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-              window.scrollTo({
-                top: targetElement.offsetTop - 80, // Adjust for navbar height
-                behavior: "smooth",
-              });
-            }
-          });
-        });
-      });
-      document.querySelectorAll(".service-card").forEach((card) => {
-        card.addEventListener("click", () => {
-          document
-            .querySelectorAll(".service-card")
-            .forEach((c) => c.classList.remove("clicked"));
-          card.classList.add("clicked");
-        });
       });
 
-      window.addEventListener("DOMContentLoaded", () => {
-        const form = document.querySelector('form[name="contact"]');
-        const emailInput = form?.querySelector('input[name="email"]');
+      // 3. Formspree Contact Form AJAX Handling
+      const form = document.querySelector('form[name="contact"]');
+      if (form) {
+        const emailInput = document.getElementById('contact-email');
         const replyToInput = document.getElementById("replyto");
-        const submitButton = form?.querySelector('button[type="submit"]');
+        const submitBtn = form.querySelector('button[type="submit"]');
 
         const showAlert = (message, type = "success") => {
           const alertBox = document.createElement("div");
           const isSuccess = type === "success";
-          alertBox.className = `fixed top-6 right-6 z-[1200] max-w-sm rounded-xl border px-5 py-4 shadow-2xl backdrop-blur ${isSuccess ? "border-green-500/30 bg-green-950/90 text-green-200" : "border-red-500/30 bg-red-950/90 text-red-200"}`;
+          alertBox.className = `fixed top-6 right-6 z-[1200] max-w-sm rounded-2xl border px-5 py-4 shadow-2xl backdrop-blur-md ${isSuccess ? "border-emerald-500/30 bg-emerald-950/90 text-emerald-200" : "border-rose-500/30 bg-rose-950/90 text-rose-200"}`;
           alertBox.innerHTML = `
             <div class="flex items-start gap-3">
-              <div class="mt-0.5 text-lg">${isSuccess ? "✓" : "⚠"}</div>
+              <div class="mt-0.5 text-lg font-bold">${isSuccess ? "✓" : "⚠"}</div>
               <div>
-                <p class="font-semibold">${isSuccess ? "Message Sent" : "Submission Failed"}</p>
-                <p class="mt-1 text-sm opacity-90">${message}</p>
+                <p class="font-bold text-sm">${isSuccess ? "Message Sent!" : "Submission Failed"}</p>
+                <p class="mt-0.5 text-xs opacity-90">${message}</p>
               </div>
             </div>
           `;
-
           document.body.appendChild(alertBox);
           setTimeout(() => {
             alertBox.classList.add("opacity-0", "transition", "duration-300");
             setTimeout(() => alertBox.remove(), 300);
-          }, 3000);
+          }, 3500);
         };
 
-        if (form && emailInput && replyToInput) {
-          const syncReplyTo = () => {
-            replyToInput.value = emailInput.value.trim();
-          };
-
-          emailInput.addEventListener("input", syncReplyTo);
-          syncReplyTo();
+        if (emailInput && replyToInput) {
+          emailInput.addEventListener("input", () => replyToInput.value = emailInput.value.trim());
+          replyToInput.value = emailInput.value.trim();
         }
 
-        if (form) {
-          form.addEventListener("submit", async (event) => {
-            event.preventDefault();
+        form.addEventListener("submit", async (e) => {
+          e.preventDefault();
+          if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
+          }
 
-            if (!form.checkValidity()) {
-              form.reportValidity();
-              return;
+          if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = 'Sending to Email... <i class="fas fa-spinner fa-spin ml-2"></i>';
+          }
+
+          try {
+            const response = await fetch(form.action, {
+              method: "POST",
+              headers: { Accept: "application/json" },
+              body: new FormData(form),
+            });
+
+            if (response.ok) {
+              form.reset();
+              showAlert("Thank you! Your message has been sent directly to Mohit's email inbox.", "success");
+            } else {
+              // Fallback to standard form submit if fetch blocked
+              form.submit();
             }
-
-            if (submitButton) {
-              submitButton.disabled = true;
-              submitButton.innerHTML = 'Sending...';
+          } catch (err) {
+            // Direct submission fallback
+            form.submit();
+          } finally {
+            if (submitBtn) {
+              submitBtn.disabled = false;
+              submitBtn.innerHTML = 'Send Message To My Email <i class="fas fa-paper-plane ml-2"></i>';
             }
-
-            showAlert("Sending your message...", "info");
-
-            try {
-              const response = await fetch(form.action, {
-                method: form.method,
-                headers: {
-                  Accept: "application/json",
-                },
-                body: new FormData(form),
-              });
-
-              if (response.ok) {
-                form.reset();
-                if (replyToInput) replyToInput.value = "";
-                showAlert("Thanks! Your message has been sent successfully.", "success");
-              } else {
-                const data = await response.json().catch(() => null);
-                const errorMessage = data?.error || "Something went wrong. Please try again.";
-                showAlert(errorMessage, "error");
-              }
-            } catch (error) {
-              showAlert("Network error. Please try again later.", "error");
-            } finally {
-              if (submitButton) {
-                submitButton.disabled = false;
-                submitButton.innerHTML = "Send Message";
-              }
-            }
-          });
-        }
-      });
-    </script>
-  </div>
+          }
+        });
+      }
+    });
+  </script>
 </body>
 
 </html>
