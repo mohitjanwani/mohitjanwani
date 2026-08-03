@@ -61,13 +61,13 @@
           <a href="#contact" class="nav-link text-xs uppercase tracking-wider font-semibold text-gray-300 hover:text-[#F9CA6F] transition-colors" data-section="contact">Contact</a>
         </nav>
 
-        <!-- Header Right Actions -->
+        <!-- Header Right Actions (Desktop) -->
         <div class="hidden sm:flex items-center space-x-4">
           <a href="tel:+918799051416" class="text-xs font-semibold text-gray-300 hover:text-[#F9CA6F] flex items-center gap-2 transition-colors">
             <i class="fa fa-phone text-[#F9CA6F]"></i>
             <span>+91 879 905 1416</span>
           </a>
-          <a href="./image/mohitjanwani.pdf" target="_blank" class="px-5 py-2 rounded-full text-xs font-semibold bg-[#F9CA6F] text-[#070b14] hover:bg-[#f59e0b] hover:shadow-[0_0_20px_rgba(249,202,111,0.4)] transition-all transform hover:-translate-y-0.5">
+          <a href="./image/mohitjanwani.pdf" download="Mohit_Janwani_Resume.pdf" target="_blank" class="px-5 py-2 rounded-full text-xs font-semibold bg-[#F9CA6F] text-[#070b14] hover:bg-[#f59e0b] hover:shadow-[0_0_20px_rgba(249,202,111,0.4)] transition-all transform hover:-translate-y-0.5">
             Resume <i class="fas fa-download ml-1.5"></i>
           </a>
         </div>
@@ -91,7 +91,7 @@
           <a href="#contact" @click="mobileMenuOpen = false" class="text-sm uppercase font-semibold text-white hover:text-[#F9CA6F] transition-colors py-1">Contact</a>
           <div class="pt-4 border-t border-white/10 flex flex-col gap-3">
             <a href="tel:+918799051416" class="text-sm text-gray-300 flex items-center gap-2"><i class="fa fa-phone text-[#F9CA6F]"></i> +91 879 905 1416</a>
-            <a href="./image/mohitjanwani.pdf" target="_blank" class="w-full text-center py-2.5 rounded-full text-sm font-bold bg-[#F9CA6F] text-[#070b14]">Download Resume <i class="fas fa-download ml-1.5"></i></a>
+            <a href="./image/mohitjanwani.pdf" download="Mohit_Janwani_Resume.pdf" target="_blank" class="w-full text-center py-2.5 rounded-full text-sm font-bold bg-[#F9CA6F] text-[#070b14]">Download Resume PDF <i class="fas fa-download ml-1.5"></i></a>
           </div>
         </div>
       </div>
@@ -134,7 +134,7 @@
           <a href="#contact" class="px-8 py-3.5 rounded-full text-sm font-bold bg-white/5 border border-white/15 text-white hover:border-[#F9CA6F] hover:text-[#F9CA6F] transition-all transform hover:-translate-y-1">
             Get In Touch
           </a>
-          <a href="./image/mohitjanwani.pdf" target="_blank" class="px-6 py-3.5 rounded-full text-sm font-bold bg-white/5 border border-white/15 text-[#38bdf8] hover:border-[#38bdf8] hover:bg-[#38bdf8]/10 transition-all transform hover:-translate-y-1">
+          <a href="./image/mohitjanwani.pdf" download="Mohit_Janwani_Resume.pdf" target="_blank" class="px-6 py-3.5 rounded-full text-sm font-bold bg-white/5 border border-white/15 text-[#38bdf8] hover:border-[#38bdf8] hover:bg-[#38bdf8]/10 transition-all transform hover:-translate-y-1">
             Download CV <i class="fas fa-file-pdf ml-1.5"></i>
           </a>
         </div>
@@ -284,8 +284,8 @@
             </div>
 
             <!-- Resume Download Link -->
-            <a href="./image/mohitjanwani.pdf" target="_blank" class="inline-flex items-center gap-3 px-8 py-3.5 rounded-full text-sm font-bold bg-[#F9CA6F] text-[#070b14] hover:bg-[#f59e0b] hover:shadow-[0_0_25px_rgba(249,202,111,0.4)] transition-all">
-              Download Full Resume <i class="fas fa-arrow-down-long"></i>
+            <a href="./image/mohitjanwani.pdf" download="Mohit_Janwani_Resume.pdf" target="_blank" class="inline-flex items-center gap-3 px-8 py-3.5 rounded-full text-sm font-bold bg-[#F9CA6F] text-[#070b14] hover:bg-[#f59e0b] hover:shadow-[0_0_25px_rgba(249,202,111,0.4)] transition-all">
+              Download Full Resume PDF <i class="fas fa-arrow-down-long"></i>
             </a>
           </div>
         </div>
@@ -470,8 +470,8 @@
       </div>
     </section>
 
-    <!-- RESUME & TIMELINE SECTION (Chronological Bottom-to-Top: School -> BCA -> Freelance -> MCA -> Shuru-up Full Stack) -->
-    <section id="resume" class="relative py-28 overflow-hidden" x-data="{ activeTimeline: 'all' }">
+    <!-- RESUME & TIMELINE SECTION (Mobile-Optimized 2-Tab View: Work Experience & Education) -->
+    <section id="resume" class="relative py-20 sm:py-28 overflow-hidden" x-data="{ activeTimeline: 'experience' }">
       <!-- Background Title Overlay -->
       <div class="absolute top-10 left-0 w-full flex justify-center pointer-events-none select-none opacity-5">
         <h2 class="text-7xl sm:text-9xl font-black text-white uppercase tracking-widest">RESUME</h2>
@@ -479,117 +479,124 @@
 
       <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <!-- Section Header -->
-        <div class="text-center mb-12">
+        <div class="text-center mb-10 sm:mb-12">
           <h2 class="text-sm uppercase font-bold text-[#F9CA6F] tracking-widest mb-2">My Journey</h2>
           <h3 class="text-3xl sm:text-4xl font-extrabold text-white">Experience & Education</h3>
           <div class="w-24 h-1 bg-gradient-to-r from-[#F9CA6F] to-[#38bdf8] mx-auto mt-4 rounded-full"></div>
         </div>
 
-        <!-- Balanced Switcher Tabs -->
-        <div class="flex justify-center items-center gap-3 mb-12">
-          <button @click="activeTimeline = 'all'" :class="activeTimeline === 'all' ? 'bg-[#F9CA6F] text-[#070b14] font-bold shadow-[0_0_20px_rgba(249,202,111,0.4)]' : 'glass-panel text-gray-300 hover:text-white border border-white/10'" class="px-6 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all flex items-center gap-2">
-            <i class="fas fa-[#timeline]"></i> Complete Journey
-          </button>
-          <button @click="activeTimeline = 'experience'" :class="activeTimeline === 'experience' ? 'bg-[#F9CA6F] text-[#070b14] font-bold shadow-[0_0_20px_rgba(249,202,111,0.4)]' : 'glass-panel text-gray-300 hover:text-white border border-white/10'" class="px-6 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all flex items-center gap-2">
+        <!-- 2 Cleaner Switcher Tabs (Work Experience & Education) -->
+        <div class="flex justify-center items-center gap-3 mb-10 sm:mb-12 max-w-md mx-auto">
+          <button @click="activeTimeline = 'experience'" :class="activeTimeline === 'experience' ? 'bg-[#F9CA6F] text-[#070b14] font-bold shadow-[0_0_20px_rgba(249,202,111,0.4)]' : 'glass-panel text-gray-300 hover:text-white border border-white/10'" class="flex-1 py-3 px-4 sm:px-6 rounded-full text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-2">
             <i class="fas fa-briefcase"></i> Work Experience
           </button>
-          <button @click="activeTimeline = 'education'" :class="activeTimeline === 'education' ? 'bg-[#F9CA6F] text-[#070b14] font-bold shadow-[0_0_20px_rgba(249,202,111,0.4)]' : 'glass-panel text-gray-300 hover:text-white border border-white/10'" class="px-6 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all flex items-center gap-2">
+          <button @click="activeTimeline = 'education'" :class="activeTimeline === 'education' ? 'bg-[#F9CA6F] text-[#070b14] font-bold shadow-[0_0_20px_rgba(249,202,111,0.4)]' : 'glass-panel text-gray-300 hover:text-white border border-white/10'" class="flex-1 py-3 px-4 sm:px-6 rounded-full text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-2">
             <i class="fas fa-graduation-cap"></i> Education
           </button>
         </div>
 
-        <!-- Centered Timeline (Strict Chronological Bottom-to-Up: Top = Most Recent (Shuru-up), Bottom = Oldest (School)) -->
-        <div class="relative border-l-2 border-white/10 ml-4 sm:ml-8 space-y-8 pl-6 sm:pl-10">
+        <!-- Timeline Container (Mobile-Optimized Layout & bullet alignments) -->
+        <div class="relative border-l-2 border-white/15 ml-3 sm:ml-8 space-y-6 sm:space-y-8 pl-5 sm:pl-10">
 
-          <!-- 1. Top (Most Recent Work): Shuru-up Full Stack Developer (Feb 2024 – Present) -->
-          <div x-show="activeTimeline === 'all' || activeTimeline === 'experience'" class="relative group" x-transition>
-            <div class="absolute -left-[35px] sm:-left-[51px] top-1 w-6 h-6 rounded-full bg-[#070b14] border-2 border-[#F9CA6F] flex items-center justify-center group-hover:bg-[#F9CA6F] transition-colors">
-              <i class="fas fa-briefcase text-[10px] text-[#F9CA6F] group-hover:text-[#070b14]"></i>
-            </div>
-            <div class="glass-panel glass-panel-hover rounded-2xl p-6 border border-white/10">
-              <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
-                <span class="text-xs font-bold text-[#F9CA6F] bg-[#F9CA6F]/10 px-3 py-1 rounded-full border border-[#F9CA6F]/20">Work Experience • Feb 2024 – Present</span>
-                <span class="text-xs font-semibold text-gray-400"><i class="fas fa-building text-[#38bdf8] mr-1"></i> Shuru-up</span>
+          <!-- TAB 1: WORK EXPERIENCE ITEMS (Top = Shuru-up, Bottom = Freelance) -->
+          <template x-if="activeTimeline === 'experience'">
+            <div class="space-y-6 sm:space-y-8">
+              <!-- Item 1: Shuru-up Full Stack Developer (Feb 2024 – Present) -->
+              <div class="relative group" x-transition>
+                <div class="absolute -left-[32px] sm:-left-[51px] top-1.5 sm:top-1 w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-[#070b14] border-2 border-[#F9CA6F] flex items-center justify-center group-hover:bg-[#F9CA6F] transition-colors">
+                  <i class="fas fa-briefcase text-[9px] sm:text-[10px] text-[#F9CA6F] group-hover:text-[#070b14]"></i>
+                </div>
+                <div class="glass-panel glass-panel-hover rounded-2xl p-5 sm:p-6 border border-white/10">
+                  <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                    <span class="text-[11px] sm:text-xs font-bold text-[#F9CA6F] bg-[#F9CA6F]/10 px-3 py-1 rounded-full border border-[#F9CA6F]/20">Feb 2024 – Present</span>
+                    <span class="text-xs font-semibold text-gray-400"><i class="fas fa-building text-[#38bdf8] mr-1"></i> Shuru-up</span>
+                  </div>
+                  <h4 class="text-lg sm:text-xl font-bold text-white">Full Stack Developer</h4>
+                  <p class="text-xs sm:text-sm font-semibold text-[#38bdf8] mb-3">Shuru-up, Ahmedabad</p>
+                  <p class="text-gray-300 text-xs sm:text-sm leading-relaxed">
+                    Building scalable pre-IPO & private market investment platforms, developing interactive frontends using TALL Stack, implementing Laravel web crawlers for real-time market scraping, and managing MySQL & AWS S3 cloud document infrastructure.
+                  </p>
+                </div>
               </div>
-              <h4 class="text-xl font-bold text-white">Full Stack Developer</h4>
-              <p class="text-sm font-semibold text-[#38bdf8] mb-3">Shuru-up, Ahmedabad</p>
-              <p class="text-gray-300 text-sm leading-relaxed">
-                Building scalable pre-IPO & private market investment platforms, developing interactive frontends using TALL Stack, implementing Laravel web crawlers for real-time market scraping, and managing MySQL & AWS S3 cloud document infrastructure.
-              </p>
-            </div>
-          </div>
 
-          <!-- 2. MCA (June 2024 – 2026) -->
-          <div x-show="activeTimeline === 'all' || activeTimeline === 'education'" class="relative group" x-transition>
-            <div class="absolute -left-[35px] sm:-left-[51px] top-1 w-6 h-6 rounded-full bg-[#070b14] border-2 border-[#38bdf8] flex items-center justify-center group-hover:bg-[#38bdf8] transition-colors">
-              <i class="fas fa-graduation-cap text-[10px] text-[#38bdf8] group-hover:text-[#070b14]"></i>
-            </div>
-            <div class="glass-panel glass-panel-hover rounded-2xl p-6 border border-white/10">
-              <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
-                <span class="text-xs font-bold text-[#38bdf8] bg-[#38bdf8]/10 px-3 py-1 rounded-full border border-[#38bdf8]/20">Education • June 2024 – 2026</span>
-                <span class="text-xs font-semibold text-gray-400"><i class="fas fa-map-marker-alt text-[#F9CA6F] mr-1"></i> Ahmedabad</span>
+              <!-- Item 2: Freelance Full Stack Developer (Jan 2023 – Present) -->
+              <div class="relative group" x-transition>
+                <div class="absolute -left-[32px] sm:-left-[51px] top-1.5 sm:top-1 w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-[#070b14] border-2 border-[#F9CA6F] flex items-center justify-center group-hover:bg-[#F9CA6F] transition-colors">
+                  <i class="fas fa-briefcase text-[9px] sm:text-[10px] text-[#F9CA6F] group-hover:text-[#070b14]"></i>
+                </div>
+                <div class="glass-panel glass-panel-hover rounded-2xl p-5 sm:p-6 border border-white/10">
+                  <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                    <span class="text-[11px] sm:text-xs font-bold text-[#F9CA6F] bg-[#F9CA6F]/10 px-3 py-1 rounded-full border border-[#F9CA6F]/20">Jan 2023 – Present</span>
+                    <span class="text-xs font-semibold text-gray-400"><i class="fas fa-laptop-code text-[#F9CA6F] mr-1"></i> Freelance</span>
+                  </div>
+                  <h4 class="text-lg sm:text-xl font-bold text-white">Freelance Full Stack Developer</h4>
+                  <p class="text-xs sm:text-sm font-semibold text-[#38bdf8] mb-3">Independent / Client Projects</p>
+                  <p class="text-gray-300 text-xs sm:text-sm leading-relaxed">
+                    Delivering full-stack web applications, custom management portals (Gym Management Systems, Acard Admin), AI healthcare tools, database architectures, and API integrations for client projects.
+                  </p>
+                </div>
               </div>
-              <h4 class="text-xl font-bold text-white">Master of Computer Applications (MCA)</h4>
-              <p class="text-sm font-semibold text-[#F9CA6F] mb-3">LJ University, Ahmedabad</p>
-              <p class="text-gray-300 text-sm leading-relaxed">
-                Advancing in software engineering, system architecture, enterprise application development, web crawlers, and API integrations.
-              </p>
             </div>
-          </div>
+          </template>
 
-          <!-- 3. Freelance Full Stack Developer (Jan 2023 – Present) -->
-          <div x-show="activeTimeline === 'all' || activeTimeline === 'experience'" class="relative group" x-transition>
-            <div class="absolute -left-[35px] sm:-left-[51px] top-1 w-6 h-6 rounded-full bg-[#070b14] border-2 border-[#F9CA6F] flex items-center justify-center group-hover:bg-[#F9CA6F] transition-colors">
-              <i class="fas fa-briefcase text-[10px] text-[#F9CA6F] group-hover:text-[#070b14]"></i>
-            </div>
-            <div class="glass-panel glass-panel-hover rounded-2xl p-6 border border-white/10">
-              <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
-                <span class="text-xs font-bold text-[#F9CA6F] bg-[#F9CA6F]/10 px-3 py-1 rounded-full border border-[#F9CA6F]/20">Work Experience • Jan 2023 – Present</span>
-                <span class="text-xs font-semibold text-gray-400"><i class="fas fa-[#laptop-code] text-[#F9CA6F] mr-1"></i> Freelance</span>
+          <!-- TAB 2: EDUCATION ITEMS (Top = MCA, Middle = BCA, Bottom = Higher Secondary) -->
+          <template x-if="activeTimeline === 'education'">
+            <div class="space-y-6 sm:space-y-8">
+              <!-- Item 1: MCA (June 2024 – 2026) -->
+              <div class="relative group" x-transition>
+                <div class="absolute -left-[32px] sm:-left-[51px] top-1.5 sm:top-1 w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-[#070b14] border-2 border-[#38bdf8] flex items-center justify-center group-hover:bg-[#38bdf8] transition-colors">
+                  <i class="fas fa-graduation-cap text-[9px] sm:text-[10px] text-[#38bdf8] group-hover:text-[#070b14]"></i>
+                </div>
+                <div class="glass-panel glass-panel-hover rounded-2xl p-5 sm:p-6 border border-white/10">
+                  <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                    <span class="text-[11px] sm:text-xs font-bold text-[#38bdf8] bg-[#38bdf8]/10 px-3 py-1 rounded-full border border-[#38bdf8]/20">June 2024 – 2026</span>
+                    <span class="text-xs font-semibold text-gray-400"><i class="fas fa-map-marker-alt text-[#F9CA6F] mr-1"></i> Ahmedabad</span>
+                  </div>
+                  <h4 class="text-lg sm:text-xl font-bold text-white">Master of Computer Applications (MCA)</h4>
+                  <p class="text-xs sm:text-sm font-semibold text-[#F9CA6F] mb-3">LJ University, Ahmedabad</p>
+                  <p class="text-gray-300 text-xs sm:text-sm leading-relaxed">
+                    Advancing in software engineering, system architecture, enterprise application development, web crawlers, and API integrations.
+                  </p>
+                </div>
               </div>
-              <h4 class="text-xl font-bold text-white">Freelance Full Stack Developer</h4>
-              <p class="text-sm font-semibold text-[#38bdf8] mb-3">Independent / Client Projects</p>
-              <p class="text-gray-300 text-sm leading-relaxed">
-                Delivering full-stack web applications, custom management portals (Gym Management Systems, Acard Admin), AI healthcare tools, database architectures, and API integrations for client projects.
-              </p>
-            </div>
-          </div>
 
-          <!-- 4. BCA (2021 – 2024) -->
-          <div x-show="activeTimeline === 'all' || activeTimeline === 'education'" class="relative group" x-transition>
-            <div class="absolute -left-[35px] sm:-left-[51px] top-1 w-6 h-6 rounded-full bg-[#070b14] border-2 border-[#38bdf8] flex items-center justify-center group-hover:bg-[#38bdf8] transition-colors">
-              <i class="fas fa-graduation-cap text-[10px] text-[#38bdf8] group-hover:text-[#070b14]"></i>
-            </div>
-            <div class="glass-panel glass-panel-hover rounded-2xl p-6 border border-white/10">
-              <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
-                <span class="text-xs font-bold text-[#38bdf8] bg-[#38bdf8]/10 px-3 py-1 rounded-full border border-[#38bdf8]/20">Education • 2021 – 2024</span>
-                <span class="text-xs font-semibold text-gray-400"><i class="fas fa-map-marker-alt text-[#F9CA6F] mr-1"></i> Ahmedabad</span>
+              <!-- Item 2: BCA (2021 – 2024) -->
+              <div class="relative group" x-transition>
+                <div class="absolute -left-[32px] sm:-left-[51px] top-1.5 sm:top-1 w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-[#070b14] border-2 border-[#38bdf8] flex items-center justify-center group-hover:bg-[#38bdf8] transition-colors">
+                  <i class="fas fa-graduation-cap text-[9px] sm:text-[10px] text-[#38bdf8] group-hover:text-[#070b14]"></i>
+                </div>
+                <div class="glass-panel glass-panel-hover rounded-2xl p-5 sm:p-6 border border-white/10">
+                  <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                    <span class="text-[11px] sm:text-xs font-bold text-[#38bdf8] bg-[#38bdf8]/10 px-3 py-1 rounded-full border border-[#38bdf8]/20">2021 – 2024</span>
+                    <span class="text-xs font-semibold text-gray-400"><i class="fas fa-map-marker-alt text-[#F9CA6F] mr-1"></i> Ahmedabad</span>
+                  </div>
+                  <h4 class="text-lg sm:text-xl font-bold text-white">Bachelor of Computer Applications (BCA)</h4>
+                  <p class="text-xs sm:text-sm font-semibold text-[#F9CA6F] mb-3">LJ University, Ahmedabad</p>
+                  <p class="text-gray-300 text-xs sm:text-sm leading-relaxed">
+                    Strong foundation in programming, web development, data structures, relational database management, and system analysis.
+                  </p>
+                </div>
               </div>
-              <h4 class="text-xl font-bold text-white">Bachelor of Computer Applications (BCA)</h4>
-              <p class="text-sm font-semibold text-[#F9CA6F] mb-3">LJ University, Ahmedabad</p>
-              <p class="text-gray-300 text-sm leading-relaxed">
-                Strong foundation in programming, web development, data structures, relational database management, and system analysis.
-              </p>
-            </div>
-          </div>
 
-          <!-- 5. Bottom (Oldest): Higher Secondary Education (2019 – 2021) -->
-          <div x-show="activeTimeline === 'all' || activeTimeline === 'education'" class="relative group" x-transition>
-            <div class="absolute -left-[35px] sm:-left-[51px] top-1 w-6 h-6 rounded-full bg-[#070b14] border-2 border-[#38bdf8] flex items-center justify-center group-hover:bg-[#38bdf8] transition-colors">
-              <i class="fas fa-graduation-cap text-[10px] text-[#38bdf8] group-hover:text-[#070b14]"></i>
-            </div>
-            <div class="glass-panel glass-panel-hover rounded-2xl p-6 border border-white/10">
-              <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
-                <span class="text-xs font-bold text-[#38bdf8] bg-[#38bdf8]/10 px-3 py-1 rounded-full border border-[#38bdf8]/20">Education • 2019 – 2021</span>
-                <span class="text-xs font-semibold text-gray-400"><i class="fas fa-school text-[#38bdf8] mr-1"></i> Ahmedabad</span>
+              <!-- Item 3: Higher Secondary Education (2019 – 2021) -->
+              <div class="relative group" x-transition>
+                <div class="absolute -left-[32px] sm:-left-[51px] top-1.5 sm:top-1 w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-[#070b14] border-2 border-[#38bdf8] flex items-center justify-center group-hover:bg-[#38bdf8] transition-colors">
+                  <i class="fas fa-graduation-cap text-[9px] sm:text-[10px] text-[#38bdf8] group-hover:text-[#070b14]"></i>
+                </div>
+                <div class="glass-panel glass-panel-hover rounded-2xl p-5 sm:p-6 border border-white/10">
+                  <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                    <span class="text-[11px] sm:text-xs font-bold text-[#38bdf8] bg-[#38bdf8]/10 px-3 py-1 rounded-full border border-[#38bdf8]/20">2019 – 2021</span>
+                    <span class="text-xs font-semibold text-gray-400"><i class="fas fa-school text-[#38bdf8] mr-1"></i> Ahmedabad</span>
+                  </div>
+                  <h4 class="text-lg sm:text-xl font-bold text-white">Higher Secondary Education</h4>
+                  <p class="text-xs sm:text-sm font-semibold text-[#F9CA6F] mb-3">Nelsons High School, Ahmedabad</p>
+                  <p class="text-gray-300 text-xs sm:text-sm leading-relaxed">
+                    Completed higher secondary education with strong focus in mathematics, logic, and computer science.
+                  </p>
+                </div>
               </div>
-              <h4 class="text-xl font-bold text-white">Higher Secondary Education</h4>
-              <p class="text-sm font-semibold text-[#F9CA6F] mb-3">Nelsons High School, Ahmedabad</p>
-              <p class="text-gray-300 text-sm leading-relaxed">
-                Completed higher secondary education with strong focus in mathematics, logic, and computer science.
-              </p>
             </div>
-          </div>
+          </template>
 
         </div>
       </div>
@@ -832,7 +839,7 @@
                 <a href="https://github.com/mohitjanwani/blood-assistant.git" target="_blank" class="inline-flex items-center gap-1.5 text-xs font-bold text-gray-300 hover:text-[#F9CA6F] transition-colors">
                   <i class="fab fa-github text-base"></i> GitHub Code
                 </a>
-                <button @click="modalData = { title: 'Blood Assistant - AI Healthcare Platform', image: 'image/mohitjanwani.jpg', desc: 'AI-driven application assisting users with medical blood donor matching and diagnostic assistance.\n\nKey Highlights:\n- Automated blood group compatibility matching\n- Donor location filtering & emergency alert notifications\n- Machine learning assist model for user guidance', tech: ['Python', 'AI / ML', 'Flask', 'Healthcare'], github: 'https://github.com/mohitjanwani/blood-assistant.git', live: '' }; modalOpen = true" class="inline-flex items-center gap-1.5 text-xs font-bold text-rose-400 hover:text-white transition-colors">
+                <button @click="modalData = { title: 'Blood Assistant - AI Healthcare Platform', image: 'image/Cover.png', desc: 'AI-driven application assisting users with medical blood donor matching and diagnostic assistance.\n\nKey Highlights:\n- Automated blood group compatibility matching\n- Donor location filtering & emergency alert notifications\n- Machine learning assist model for user guidance', tech: ['Python', 'AI / ML', 'Flask', 'Healthcare'], github: 'https://github.com/mohitjanwani/blood-assistant.git', live: '' }; modalOpen = true" class="inline-flex items-center gap-1.5 text-xs font-bold text-rose-400 hover:text-white transition-colors">
                   Details <i class="fas fa-expand"></i>
                 </button>
               </div>
@@ -884,16 +891,17 @@
         </div>
       </div>
 
-      <!-- PROJECT DETAIL MODAL -->
-      <div x-show="modalOpen" x-cloak class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md" @keydown.escape.window="modalOpen = false" x-transition>
-        <div class="glass-panel max-w-2xl w-full rounded-3xl border border-white/20 p-6 sm:p-8 relative max-h-[90vh] overflow-y-auto" @click.outside="modalOpen = false">
-          <!-- Close Button -->
-          <button @click="modalOpen = false" class="absolute top-6 right-6 w-10 h-10 rounded-full bg-white/10 text-white hover:bg-[#F9CA6F] hover:text-[#070b14] flex items-center justify-center transition-colors">
-            <i class="fas fa-times text-lg"></i>
+      <!-- PROJECT DETAIL MODAL (Repositioned Close Button & Reserved Right Padding) -->
+      <div x-show="modalOpen" x-cloak class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/80 backdrop-blur-md" @keydown.escape.window="modalOpen = false" x-transition>
+        <div class="glass-panel max-w-2xl w-full rounded-3xl border border-white/20 p-5 sm:p-8 relative max-h-[90vh] overflow-y-auto" @click.outside="modalOpen = false">
+          
+          <!-- Repositioned Close Button (Farther Right & Non-Overlapping) -->
+          <button @click="modalOpen = false" class="absolute top-4 right-4 sm:top-6 sm:right-6 z-30 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/10 text-white hover:bg-[#F9CA6F] hover:text-[#070b14] flex items-center justify-center transition-colors shadow-lg" aria-label="Close modal">
+            <i class="fas fa-times text-base sm:text-lg"></i>
           </button>
 
-          <!-- Modal Title -->
-          <h3 class="text-2xl font-bold text-white mb-3" x-text="modalData.title"></h3>
+          <!-- Modal Title with Reserved Right Padding to Prevent Button Overlap -->
+          <h3 class="text-xl sm:text-2xl font-bold text-white mb-3 pr-12 sm:pr-14" x-text="modalData.title"></h3>
           
           <div class="flex flex-wrap gap-2 mb-4">
             <template x-for="t in modalData.tech" :key="t">
@@ -902,10 +910,10 @@
           </div>
 
           <div class="p-4 bg-white/5 rounded-2xl border border-white/10 mb-6">
-            <p class="text-gray-200 text-sm leading-relaxed whitespace-pre-line" x-text="modalData.desc"></p>
+            <p class="text-gray-200 text-xs sm:text-sm leading-relaxed whitespace-pre-line" x-text="modalData.desc"></p>
           </div>
 
-          <div class="flex items-center justify-end gap-4 pt-4 border-t border-white/10">
+          <div class="flex flex-wrap items-center justify-end gap-3 pt-4 border-t border-white/10">
             <template x-if="modalData.github">
               <a :href="modalData.github" target="_blank" class="px-5 py-2.5 rounded-full text-xs font-bold bg-[#F9CA6F] text-[#070b14] hover:bg-[#f59e0b] transition-all flex items-center gap-2">
                 <i class="fab fa-github text-base"></i> View GitHub Repository
